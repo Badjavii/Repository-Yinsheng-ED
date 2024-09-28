@@ -1,6 +1,6 @@
 # Repositorio de Estructuras de Datos - Yinsheng
 
-[!This is an imagen](/sources/Zoom-100.jpeg)
+![This is an image](/sources/Zoom-100.jpeg)
 
 ## Objetivo
 
