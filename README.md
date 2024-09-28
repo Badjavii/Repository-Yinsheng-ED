@@ -1,12 +1,14 @@
 # Repositorio de Estructuras de Datos - Yinsheng
 
+[!This is an imagen](/sources/Zoom-100.jpeg)
+
 ## Objetivo
 
 Este repositorio contiene:
 
 - Materiales de apoyo
 - Ejercicios y programas en C++
-- Proyecto final: Batalla de Zombies
+- Proyecto final: [Batalla de Zombies](/WS-Zombie-Project/)
 
 ## Plan de Evaluación
 
