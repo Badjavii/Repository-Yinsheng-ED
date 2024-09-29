@@ -1,13 +1,13 @@
 #include <iostream>
-#include <Windows.h>
-#include <cstdio>
-#include "libs/colors.h"
-#include "libs/story.h"
+#include "libs/dialogues.h"
+#include "libs/outools.h"
 using namespace std;
 
-int main(){
+int main()
+{
 
     coutStory();
+    system("pause");
 
     return 0;
 }
