@@ -18,4 +18,6 @@ void coutStory()
     couttw(RED, intro, 3);
 }
 
+
+
 #endif // STORY_H

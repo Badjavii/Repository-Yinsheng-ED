@@ -1,5 +1,5 @@
-#ifndef TYPEWRITEREFFECT_H
-#define TYPEWRITEREFFECT_H
+#ifndef OUTOOLS_H
+#define OUTOOLS_H
 
 #include <string>
 #include <iostream>
@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <thread> // Incluye la libreria para el manejo de hilos
 #include <chrono> // Incluye la libreria para el manejo del tiempo
+#include <sstream> // Incluye la librería para el manejo de string streams
 using namespace std;
 
 // Definir colores
@@ -45,9 +46,42 @@ void couttw(const string &color, const string &text, unsigned int CoutDelay)
         this_thread::sleep_for(chrono::milliseconds(CoutDelay));
     }
     cout << RESET << endl;
+};
+
+// Función de validación genérica
+// Esta función intenta convertir la entrada de tipo string a un tipo T
+// Si la conversión es exitosa y no hay caracteres adicionales en la entrada, retorna true
+template <typename T>
+bool isValid(const string &input, T &variable) {
+    istringstream iss(input);
+    return (iss >> variable) && (iss.eof());
 }
 
-#endif // TYPEWRITEREFFECT_H
+// Especialización de la función de validación para strings
+// Para strings, simplemente verificamos que la entrada no esté vacía
+template <>
+bool isValid<string>(const string &input, string &variable) {
+    variable = input;
+    return !input.empty();
+}
+
+// Función cinv genérica que utiliza plantillas
+// Esta función pide al usuario una entrada y la valida según el tipo de dato especificado
+template <typename T>
+void cinv(const string &datatype, T &variable) {
+    string input;
+    coutf(YELLOW, "» "); // Imprime el prompt en amarillo
+    while (true) {
+        getline(cin, input); // Lee la entrada del usuario
+        if (isValid(input, variable)) { // Valida la entrada
+            break; // Si la entrada es válida, sale del bucle
+        } else {
+            coutf(RED, "Entrada inválida. Inténtalo de nuevo: "); // Si la entrada no es válida, muestra un mensaje de error
+        }
+    }
+}
+
+#endif // OUTOOLS_H
 
 /* NOTA:
 
