@@ -1,5 +1,5 @@
-#ifndef STORY_H
-#define STORY_H
+#ifndef DIALOGUES_H
+#define DIALOGUES_H
 #include <iostream>
 #include "outools.h"
 using namespace std;
@@ -18,6 +18,4 @@ void coutStory()
     couttw(RED, intro, 3);
 }
 
-
-
-#endif // STORY_H
+#endif // DIALOGUES_H
