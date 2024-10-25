@@ -5,6 +5,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <cstdio>
+#include "indicator/progress_spinner.h"
 #include <thread> // Incluye la libreria para el manejo de hilos
 #include <chrono> // Incluye la libreria para el manejo del tiempo
 #include <sstream> // Incluye la librería para el manejo de string streams
@@ -79,6 +80,25 @@ void cinv(const string &datatype, T &variable) {
             coutf(RED, "Entrada inválida. Inténtalo de nuevo: "); // Si la entrada no es válida, muestra un mensaje de error
         }
     }
+}
+
+void showProgressSpinner(int duration, const string& message) {
+    using namespace indicators;
+
+    ProgressSpinner spinner{
+        option::ForegroundColor{Color::cyan},
+        option::PrefixText{message + " "},
+        option::PostfixText{" Please wait..."},
+        option::ShowPercentage{true},
+        option::SpinnerStates{vector<string>{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}}
+    };
+
+    for (int i = 0; i <= 100; ++i) {
+        spinner.set_progress(i);
+        this_thread::sleep_for(chrono::milliseconds(duration / 100));
+    }
+
+    spinner.mark_as_completed();
 }
 
 #endif // OUTOOLS_H

@@ -3,9 +3,9 @@
 #include <iostream>
 #include "outools.h"
 #include "structs.h"
-#include "SquadsManagment.h"
-#include "ZGrpsManagment.h"
-#include "MapsManagment.h"
+#include "Managers/SquadManager.h"
+#include "Managers/ZombieManager.h"
+#include "Managers/MapManager.h"
 using namespace std;
 
 void EditarSoldado(SquadsPtr current_squad)
@@ -513,7 +513,11 @@ void Principal_Menu()
             // Liberar memoria y salir
             LiberarEscuadrones(&squad_list);
             LiberarZombies(&zombies_groups_list);
+            LiberarMapa(&mapa);
             coutf(GREEN, "Memoria liberada. Saliendo del programa...\n");
+            showProgressSpinner(3000, "Exportandos Datos del Sistema");
+            showProgressSpinner(3000, "Liberando Memoria");
+            showProgressSpinner(1000, "Saliendo del Programa");
             break;
         default:
             break;
