@@ -1,8 +1,8 @@
 #ifndef MAPSMANAGMENT_H
 #define MAPSMANAGMENT_H
 #include <iostream>
-#include "outools.h"
-#include "structs.h"
+#include "../outools.h"
+#include "../structs.h"
 #include "SquadManager.h"
 #include "ZombieManager.h"
 using namespace std;

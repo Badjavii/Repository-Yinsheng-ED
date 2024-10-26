@@ -3,7 +3,11 @@
 
 #include <string>
 #include <iostream>
+
+#ifdef _WIN32
 #include <Windows.h>
+#endif
+
 #include <cstdio>
 #include "indicator/progress_spinner.h"
 #include <thread> // Incluye la libreria para el manejo de hilos
@@ -22,10 +26,26 @@ using namespace std;
 #define CYAN "\033[36m"
 #define WHITE "\033[37m"
 
+#ifdef _WIN32
+#define CLEAR_SCREEN system("cls")
+#endif
+#ifndef _WIN32
+#define CLEAR_SCREEN system("clear")
+#endif
+
+#ifdef _WIN32
+#define PAUSE_TERMINAL system("pause")
+#endif
+#ifndef _WIN32
+#define PAUSE_TERMINAL system("read -n 1 -s -r -p 'Presione cualquier tecla para continuar...'")
+#endif
+
 // #### Función que imprime texto con carácteres especiales (como á, é, ú, etc) ####
 void coutf(const string &color, const string &text)
-{
+{   
+    #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);    // Configurar la consola para usar UTF-8
+    #endif
     cout << color << text << RESET; // Imprime el texto en el color especificado y resetea el color
 }
 
@@ -36,7 +56,9 @@ void coutf(const string &color, const string &text)
 
 void couttw(const string &color, const string &text, unsigned int CoutDelay)
 {
+    #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8); // Configurar la consola para usar UTF-8
+    #endif
 
     cout << color;
     for (char c : text) // Recorrer cada carácter del texto
@@ -86,7 +108,7 @@ void showProgressSpinner(int duration, const string& message) {
     using namespace indicators;
 
     ProgressSpinner spinner{
-        option::ForegroundColor{Color::cyan},
+        option::ForegroundColor{Color::green},
         option::PrefixText{message + " "},
         option::PostfixText{" Please wait..."},
         option::ShowPercentage{true},

@@ -1,8 +1,8 @@
 #ifndef ZGRPSMANAGMENT_H
 #define ZGRPSMANAGMENT_H
 #include <iostream>
-#include "outools.h"
-#include "structs.h"
+#include "../outools.h"
+#include "../structs.h"
 #include <vector>
 using namespace std;
 

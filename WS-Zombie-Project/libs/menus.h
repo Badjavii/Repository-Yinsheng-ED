@@ -25,15 +25,16 @@ void EditarSoldado(SquadsPtr current_squad)
         int op = -1;
         while (op)
         {
-            system("cls");
+            CLEAR_SCREEN;
+
+            // Mostrar resumen del soldado
+            MostrarResumenSoldado(current_soldier);
+
             coutf(BLUE, "\t\tMENU DE EDICIÓN DEL SOLDADO " + current_soldier->name + "\n\n");
             coutf(BLUE, "1. Editar nombre\n");
             coutf(BLUE, "2. Editar rango\n");
             coutf(BLUE, "3. Editar equipo\n\n");
             coutf(BLUE, "0. REGRESAR\n\n");
-
-            // Mostrar resumen del soldado
-            MostrarResumenSoldado(current_soldier);
 
             cinv("int", op); // Usar cinv para obtener y validar la entrada del usuario
 
@@ -52,7 +53,7 @@ void EditarSoldado(SquadsPtr current_squad)
                 return;
             default:
                 coutf(RED, "Opción inválida. Inténtalo de nuevo.\n");
-                system("pause");
+                PAUSE_TERMINAL;
                 break;
             }
         }
@@ -60,7 +61,7 @@ void EditarSoldado(SquadsPtr current_squad)
     else
     {
         coutf(RED, "Soldado no encontrado.\n");
-        system("pause");
+        PAUSE_TERMINAL;
     }
 }
 
@@ -69,7 +70,7 @@ void Menu_EditarEscuadron(SquadsPtr squad_list)
     if (isSquadsListEmpty(squad_list))
     {
         coutf(RED, "La lista de escuadrones está vacía.\n");
-        system("pause");
+        PAUSE_TERMINAL;
         return;
     }
 
@@ -89,14 +90,14 @@ void Menu_EditarEscuadron(SquadsPtr squad_list)
     if (current_squad == nullptr)
     {
         coutf(RED, "Escuadrón no encontrado.\n");
-        system("pause");
+        PAUSE_TERMINAL;
         return;
     }
 
     int op = -1;
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tMENU DE EDICIÓN DE ESCUADRON #" + to_string(squad_number) + "\n\n");
         coutf(BLUE, "1. Agregar soldado\n");
         coutf(BLUE, "2. Eliminar soldado\n");
@@ -123,7 +124,7 @@ void Menu_EditarEscuadron(SquadsPtr squad_list)
             return;
         default:
             coutf(RED, "Opción inválida. Inténtalo de nuevo.\n");
-            system("pause");
+            PAUSE_TERMINAL;
             break;
         }
     }
@@ -135,7 +136,7 @@ void Menu_Squads(SquadsPtr *squad_list)
 
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tMENU DE GESTIÓN DE ESCUADRONES ANTIZOMBIES\n\n");
         coutf(BLUE, "1. Crear un nuevo escuadron\n");
         coutf(BLUE, "2. Consultar escuadrones\n");
@@ -174,7 +175,7 @@ void Menu_EditarZombie(Zombies *zombie, Zombies_GroupsPtr zombie_group_list, Squ
     int op = -1;
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tMENU DE EDICIÓN DEL ZOMBIE " + zombie->name + "\n\n");
         coutf(BLUE, "1. Editar nombre\n");
         coutf(BLUE, "2. Editar tipo\n\n");
@@ -202,7 +203,7 @@ void Menu_EditarZombie(Zombies *zombie, Zombies_GroupsPtr zombie_group_list, Squ
 
             zombie->name = nuevo_nombre;
             coutf(GREEN, "Nombre del zombie actualizado exitosamente.\n");
-            system("pause");
+            PAUSE_TERMINAL;
         }
         break;
         case 2:
@@ -253,7 +254,7 @@ void Menu_EditarZombie(Zombies *zombie, Zombies_GroupsPtr zombie_group_list, Squ
                     else
                     {
                         coutf(RED, "No se puede cambiar el tipo a Zombie Gymbro.\n");
-                        system("pause");
+                        PAUSE_TERMINAL;
                         break;
                     }
                 }
@@ -263,14 +264,14 @@ void Menu_EditarZombie(Zombies *zombie, Zombies_GroupsPtr zombie_group_list, Squ
             zombie->health = zombie_health[zombie_type - 1];
             zombie->damage = zombie_damage[zombie_type - 1];
             coutf(GREEN, "Tipo del zombie actualizado exitosamente.\n");
-            system("pause");
+            PAUSE_TERMINAL;
         }
         break;
         case 0:
             return;
         default:
             coutf(RED, "Opción inválida. Inténtalo de nuevo.\n");
-            system("pause");
+            PAUSE_TERMINAL;
             break;
         }
     }
@@ -281,7 +282,7 @@ void Menu_EditarGrupoZombie(Zombies_GroupsPtr zombie_group_list, SquadsPtr squad
     if (zombie_group_list == nullptr)
     {
         coutf(RED, "No hay grupos zombies para editar.\n");
-        system("pause");
+        PAUSE_TERMINAL;
         return;
     }
 
@@ -301,14 +302,14 @@ void Menu_EditarGrupoZombie(Zombies_GroupsPtr zombie_group_list, SquadsPtr squad
     if (current_group == nullptr)
     {
         coutf(RED, "Grupo zombie no encontrado.\n");
-        system("pause");
+        PAUSE_TERMINAL;
         return;
     }
 
     int op = -1;
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tMENU DE EDICIÓN DEL GRUPO ZOMBIE " + to_string(current_group->number) + "\n\n");
         coutf(BLUE, "1. Agregar zombie al grupo\n");
         coutf(BLUE, "2. Editar un zombie\n");
@@ -340,7 +341,7 @@ void Menu_EditarGrupoZombie(Zombies_GroupsPtr zombie_group_list, SquadsPtr squad
             if (current_zombie == nullptr)
             {
                 coutf(RED, "Zombie no encontrado.\n");
-                system("pause");
+                PAUSE_TERMINAL;
             }
             else
             {
@@ -355,7 +356,7 @@ void Menu_EditarGrupoZombie(Zombies_GroupsPtr zombie_group_list, SquadsPtr squad
             return;
         default:
             coutf(RED, "Opción inválida. Inténtalo de nuevo.\n");
-            system("pause");
+            PAUSE_TERMINAL;
             break;
         }
     }
@@ -367,7 +368,7 @@ void Menu_ZombieGroups(Zombies_GroupsPtr *zombie_group_list, SquadsPtr *squad_li
 
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tMENU DE GESTIÓN DE GRUPOS ZOMBIES\n\n");
         coutf(BLUE, "1. Crear un nuevo grupo zombie\n");
         coutf(BLUE, "2. Consultar grupos zombies\n");
@@ -409,7 +410,7 @@ void Menu_EditarEstacion(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr
         if (actual->nombre == nombre)
         {
             int op;
-            system("cls");
+            CLEAR_SCREEN;
             coutf(BLUE, "1. Asignar escuadrón antizombies\n");
             coutf(BLUE, "2. Asignar grupo de zombies\n");
             coutf(BLUE, "3. Agregar conexión\n\n");
@@ -446,7 +447,7 @@ void Menu_Mapa(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr *zombies_
 
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tMENU DE GESTIÓN DE MAPA Y ESTACIONES\n\n");
         coutf(BLUE, "1. Crear una nueva estación\n");
         coutf(BLUE, "2. Consultar estaciones\n");
@@ -473,21 +474,21 @@ void Menu_Mapa(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr *zombies_
         default:
             break;
         }
-        system("pause");
+        PAUSE_TERMINAL;
     }
 }
 
-void Principal_Menu()
+void Principal_Menu(Squads ** squad_l, Zombies_Groups** zombies_grop_l, Mapa **mapa_g)
 {
-    SquadsPtr squad_list = nullptr;
-    Zombies_GroupsPtr zombies_groups_list = nullptr;
-    MapaPtr mapa = new Mapa;
+    SquadsPtr squad_list = *squad_l;
+    Zombies_GroupsPtr zombies_groups_list = *zombies_grop_l;
+    MapaPtr mapa = *mapa_g;
     mapa->estaciones = nullptr;
     int op = -1;
 
     while (op)
     {
-        system("cls");
+        CLEAR_SCREEN;
         coutf(BLUE, "\t\tPRINCIPAL MENU\n\n");
         coutf(BLUE, "1. Escuadrones Antizombies\n");
         coutf(BLUE, "2. Grupos de Zombies\n");
@@ -510,19 +511,12 @@ void Principal_Menu()
             Menu_Mapa(&mapa, &squad_list, &zombies_groups_list);
             break;
         case 0:
-            // Liberar memoria y salir
-            LiberarEscuadrones(&squad_list);
-            LiberarZombies(&zombies_groups_list);
-            LiberarMapa(&mapa);
-            coutf(GREEN, "Memoria liberada. Saliendo del programa...\n");
-            showProgressSpinner(3000, "Exportandos Datos del Sistema");
-            showProgressSpinner(3000, "Liberando Memoria");
-            showProgressSpinner(1000, "Saliendo del Programa");
+            // Salir
             break;
         default:
             break;
         }
-        system("pause");
+        PAUSE_TERMINAL;
     }
 }
 

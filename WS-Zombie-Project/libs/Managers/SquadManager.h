@@ -1,8 +1,8 @@
 #ifndef SQUADSMANAGMENT_H
 #define SQUADSMANAGMENT_H
 #include <iostream>
-#include "outools.h"
-#include "structs.h"
+#include "../outools.h"
+#include "../structs.h"
 #include <vector>
 using namespace std;
 
@@ -184,7 +184,7 @@ void AsignarItems(Soldier_Equipment *equipment)
     coutf(GREEN, "Seleccione un ítem ofensivo:\n");
     for (int i = 0; i < items_ofensivos.size(); ++i)
     {
-        coutf(GREEN, to_string(i + 1) + ". " + items_ofensivos[i] + "\n");
+        coutf(GREEN, to_string(i + 1) + ". " + items_ofensivos[i] + ": " + description_item_ofensivo[i] + "\n");
     }
     cinv("int", opcion);
     while (opcion < 1 || opcion > items_ofensivos.size())
@@ -194,13 +194,16 @@ void AsignarItems(Soldier_Equipment *equipment)
     }
     equipment->item1 = new items; // Inicializar item1
     equipment->item1->name = items_ofensivos[opcion - 1];
+    equipment->item1->description = description_item_ofensivo[opcion - 1];
+    equipment->item1->uses = uses_item_ofensivo[opcion - 1];
+    equipment->item1->xp = xp_item_ofensivo[opcion - 1];
     equipment->item1->type_item = "Ofensivo";
 
     // Asignar ítem defensivo
     coutf(GREEN, "Seleccione un ítem defensivo:\n");
     for (int i = 0; i < items_defensivos.size(); ++i)
     {
-        coutf(GREEN, to_string(i + 1) + ". " + items_defensivos[i] + "\n");
+        coutf(GREEN, to_string(i + 1) + ". " + items_defensivos[i] + ": " + description_item_defensivo[i]  + "\n");
     }
     cinv("int", opcion);
     while (opcion < 1 || opcion > items_defensivos.size())
@@ -210,13 +213,16 @@ void AsignarItems(Soldier_Equipment *equipment)
     }
     equipment->item2 = new items; // Inicializar item2
     equipment->item2->name = items_defensivos[opcion - 1];
+    equipment->item2->description = description_item_defensivo[opcion - 1];
+    equipment->item2->uses = uses_item_defensivos[opcion - 1];
+    equipment->item2->xp = xp_item_defensivo[opcion - 1];
     equipment->item2->type_item = "Defensivo";
 
     // Asignar ítem de curación
     coutf(GREEN, "Seleccione un ítem de curación:\n");
     for (int i = 0; i < items_curacion.size(); ++i)
     {
-        coutf(GREEN, to_string(i + 1) + ". " + items_curacion[i] + "\n");
+        coutf(GREEN, to_string(i + 1) + ". " + items_curacion[i] + ": " + description_item_curacion[i]  + "\n");
     }
     cinv("int", opcion);
     while (opcion < 1 || opcion > items_curacion.size())
@@ -226,6 +232,9 @@ void AsignarItems(Soldier_Equipment *equipment)
     }
     equipment->item3 = new items; // Inicializar item3
     equipment->item3->name = items_curacion[opcion - 1];
+    equipment->item3->description = description_item_curacion[opcion - 1];
+    equipment->item3->uses = uses_item_curacion[opcion - 1];
+    equipment->item3->xp = xp_item_curacion[opcion - 1];
     equipment->item3->type_item = "Curación";
 }
 
@@ -443,7 +452,7 @@ void EditarEquipoSoldado(Soldier *current_soldier)
         coutf(GREEN, "Seleccione un nuevo ítem ofensivo:\n");
         for (int i = 0; i < items_ofensivos.size(); ++i)
         {
-            coutf(GREEN, to_string(i + 1) + ". " + items_ofensivos[i] + "\n");
+            coutf(GREEN, to_string(i + 1) + ". " + items_ofensivos[i] + ": " + description_item_ofensivo[i] + "\n");
         }
         cinv("int", item_opcion);
         while (item_opcion < 1 || item_opcion > items_ofensivos.size())
@@ -452,13 +461,16 @@ void EditarEquipoSoldado(Soldier *current_soldier)
             cinv("int", item_opcion);
         }
         current_soldier->equipment->item1->name = items_ofensivos[item_opcion - 1];
+        current_soldier->equipment->item1->description = description_item_ofensivo[item_opcion - 1];
+        current_soldier->equipment->item1->uses = uses_item_ofensivo[item_opcion - 1];
+        current_soldier->equipment->item1->xp = xp_item_ofensivo[item_opcion - 1];
         current_soldier->equipment->item1->type_item = "Ofensivo";
         break;
     case 2:
         coutf(GREEN, "Seleccione un nuevo ítem defensivo:\n");
         for (int i = 0; i < items_defensivos.size(); ++i)
         {
-            coutf(GREEN, to_string(i + 1) + ". " + items_defensivos[i] + "\n");
+            coutf(GREEN, to_string(i + 1) + ". " + items_defensivos[i] + ": " + description_item_defensivo[i]  + "\n");
         }
         cinv("int", item_opcion);
         while (item_opcion < 1 || item_opcion > items_defensivos.size())
@@ -467,13 +479,16 @@ void EditarEquipoSoldado(Soldier *current_soldier)
             cinv("int", item_opcion);
         }
         current_soldier->equipment->item2->name = items_defensivos[item_opcion - 1];
+        current_soldier->equipment->item2->description = description_item_defensivo[item_opcion - 1];
+        current_soldier->equipment->item2->uses = uses_item_defensivos[item_opcion - 1];
+        current_soldier->equipment->item2->xp = xp_item_defensivo[item_opcion - 1];
         current_soldier->equipment->item2->type_item = "Defensivo";
         break;
     case 3:
         coutf(GREEN, "Seleccione un nuevo ítem de curación:\n");
         for (int i = 0; i < items_curacion.size(); ++i)
         {
-            coutf(GREEN, to_string(i + 1) + ". " + items_curacion[i] + "\n");
+            coutf(GREEN, to_string(i + 1) + ". " + items_curacion[i] + ": " + description_item_curacion[i]  + "\n");
         }
         cinv("int", item_opcion);
         while (item_opcion < 1 || item_opcion > items_curacion.size())
@@ -482,6 +497,9 @@ void EditarEquipoSoldado(Soldier *current_soldier)
             cinv("int", item_opcion);
         }
         current_soldier->equipment->item3->name = items_curacion[item_opcion - 1];
+        current_soldier->equipment->item3->description = description_item_curacion[item_opcion - 1];
+        current_soldier->equipment->item3->uses = uses_item_curacion[item_opcion - 1];
+        current_soldier->equipment->item3->xp = xp_item_curacion[item_opcion - 1];
         current_soldier->equipment->item3->type_item = "Curación";
         break;
     }
