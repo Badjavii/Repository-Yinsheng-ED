@@ -34,6 +34,7 @@ void LiberarMapa(MapaPtr *mapa)
 
 void EliminarEstacion(MapaPtr *mapa)
 {
+    MostrarTotalMaps((*mapa)->estaciones);
     string nombre;
     coutf(BLUE, "Ingrese el nombre de la estación a eliminar: ");
     cinv("string", nombre);
@@ -218,6 +219,7 @@ void AsignarGrupoZombies(EstacionPtr estacion, Zombies_GroupsPtr *zombies_groups
         return;
     }
 
+    MostrarResumenGruposZombies(*(zombies_groups_list));
     int numero;
     coutf(BLUE, "Ingrese el número del grupo de zombies a asignar: ");
     cinv("int", numero);
@@ -270,6 +272,28 @@ void AgregarConexion(EstacionPtr estacion, MapaPtr *mapa)
         actual = actual->siguiente;
     }
     coutf(RED, "Estación no encontrada.\n");
+}
+
+void MostrarTotalMaps(EstacionPtr Estacion)
+{
+    coutf(BLUE, "---------------------------------------\n");
+    coutf(BLUE, " Resumén de todos los escuadrones\n");
+    coutf(BLUE, "---------------------------------------\n");
+    coutf(GREEN, "Nombre               Conexión\n");
+    coutf(BLUE, "--------------   ---------------------------\n");
+
+    EstacionPtr estacion = Estacion;
+    while (estacion != nullptr)
+    {
+        coutf(BLUE, estacion->nombre + "      ");
+        if (!estacion->conexiones)
+            coutf(BLUE, "No hay conexiones\n");
+        else
+            coutf(BLUE, estacion->conexiones->nombre + "/10\n");
+        estacion = estacion->siguiente;
+    }
+
+    coutf(BLUE, "---------------------------------------\n");
 }
 
 #endif // MAPSMANAGER_H

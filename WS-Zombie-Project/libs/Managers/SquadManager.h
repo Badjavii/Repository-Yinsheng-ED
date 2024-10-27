@@ -8,16 +8,16 @@ using namespace std;
 
 void MostrarResumenSoldado(Soldier *soldier)
 {
-    coutf(BLUE, "--------------------------------------------------------------------------------\n");
-    coutf(BLUE, "                   Resumen del Soldado '" + soldier->name + "'\n");
-    coutf(BLUE, "--------------------------------------------------------------------------------\n");
-    coutf(BLUE, "Nombre             Rango                              Items\n");
-    coutf(BLUE, "-----------      --------------     -----------------------------------------\n");
-    coutf(BLUE, soldier->name + "                    " + soldier->range + "               " +
-                    soldier->equipment->item1->name + ", " +
-                    soldier->equipment->item2->name + ", " +
-                    soldier->equipment->item3->name + "\n");
-    coutf(BLUE, "--------------------------------------------------------------------------------\n");
+    coutf(BLUE, "-------------------------------------------------------------------------------------------------------------------------\n");
+    coutf(GREEN, "                             Resumen del Soldado '" + soldier->name + "'\n");
+    coutf(BLUE, "-------------------------------------------------------------------------------------------------------------------------\n");
+    coutf(GREEN, "Nombre             Rango                              Items\n");
+    coutf(BLUE, "-----------      --------------     -------------------------------------------------------------------------------------\n");
+    coutf(BLUE, soldier->name + "               " + soldier->range + "               " +
+                    soldier->equipment->item1->name + " (" + to_string(soldier->equipment->item1->xp) + " xp y " + to_string(soldier->equipment->item1->uses)+ " usos), " +
+                    soldier->equipment->item2->name + " (" + to_string(soldier->equipment->item2->xp) + " xp y " + to_string(soldier->equipment->item2->uses)+ " usos), " +
+                    soldier->equipment->item3->name + " (" + to_string(soldier->equipment->item3->xp) + " xp y " + to_string(soldier->equipment->item3->uses)+ " usos) \n");
+    coutf(BLUE, "-------------------------------------------------------------------------------------------------------------------------\n\n");
 }
 
 int ContarSoldados(Soldier *soldiers)
@@ -90,7 +90,8 @@ void ConsultarEscuadrones(SquadsPtr *squad_list)
         {
             while (current_soldier != nullptr)
             {
-                coutf(BLUE, "  Soldado: " + current_soldier->name + ", Rango: " + current_soldier->range + ", Items ofensivo: " + current_soldier->equipment->item1->name + "\n");
+                int xp = current_soldier->equipment->item1->xp + current_soldier->equipment->item2->xp + current_soldier->equipment->item3->xp;
+                coutf(BLUE, "  Soldado: " + current_soldier->name + ", Rango: " + current_soldier->range + ", Items ofensivo: " + current_soldier->equipment->item1->name + ", XP Total: " + to_string(current_soldier->XP)  + "\n");
                 current_soldier = current_soldier->next;
             }
         }
@@ -321,6 +322,8 @@ void AgregarSoldado(SquadsPtr current_squad)
     // Asignar equipo al soldado
     new_soldier->equipment = new Soldier_Equipment;
     AsignarItems(new_soldier->equipment);
+    
+    new_soldier->XP = (new_soldier->equipment->item1->xp + new_soldier->equipment->item2->xp + new_soldier->equipment->item3->xp);
 
     new_soldier->next = current_squad->soldiers;
     current_squad->soldiers = new_soldier;
@@ -503,30 +506,32 @@ void EditarEquipoSoldado(Soldier *current_soldier)
         current_soldier->equipment->item3->type_item = "Curación";
         break;
     }
+    current_soldier->XP = (current_soldier->equipment->item1->xp + current_soldier->equipment->item2->xp + current_soldier->equipment->item3->xp);
     coutf(GREEN, "Equipo actualizado exitosamente.\n");
     system("pause");
 }
 
 void MostrarResumenEscuadron(SquadsPtr current_squad)
 {
-    coutf(RESET, "-------------------------------------------------------------------------\n");
+    coutf(RESET, "----------------------------------------------------------------------------------\n");
     coutf(GREEN, "                          Resumén de Escuadrón\n");
-    coutf(RESET, "-------------------------------------------------------------------------\n");
-    coutf(RESET, "Rango          Nombre                   Items\n");
-    coutf(RESET, "--------    ----------------       --------------------------------------\n");
+    coutf(RESET, "----------------------------------------------------------------------------------\n");
+    coutf(RESET, "Rango          Nombre            XP                Items\n");
+    coutf(RESET, "--------    ----------------  ---------     --------------------------------------\n");
 
     Soldier *current_soldier = current_squad->soldiers;
     while (current_soldier != nullptr)
     {
-        coutf(RESET, current_soldier->range + "    ");
+        coutf(RESET, current_soldier->range + "        ");
         coutf(RESET, current_soldier->name + "        ");
+        coutf(RESET, to_string(current_soldier->XP) + "        ");
         coutf(RESET, current_soldier->equipment->item1->name + ", ");
         coutf(RESET, current_soldier->equipment->item2->name + ", ");
         coutf(RESET, current_soldier->equipment->item3->name + "\n");
         current_soldier = current_soldier->next;
     }
 
-    coutf(RESET, "-------------------------------------------------------------------------\n");
+    coutf(RESET, "----------------------------------------------------------------------------------\n");
 }
 
 void MostrarTotalEscuadrones(SquadsPtr squad_list)

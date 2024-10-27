@@ -69,6 +69,7 @@ struct Soldier
     string name;
     string range;
     int health;
+    int XP;
     Soldier_Equipment *equipment;
     Soldier *next;
 };

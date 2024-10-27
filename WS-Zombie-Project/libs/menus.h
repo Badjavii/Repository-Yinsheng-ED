@@ -401,6 +401,7 @@ void Menu_ZombieGroups(Zombies_GroupsPtr *zombie_group_list, SquadsPtr *squad_li
 void Menu_EditarEstacion(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr *zombies_groups_list)
 {
     string nombre;
+    MostrarTotalMaps((*mapa)->estaciones);
     coutf(BLUE, "Ingrese el nombre de la estación a editar: ");
     cinv("string", nombre); // Usar cinv para obtener y validar la entrada del usuario
 
