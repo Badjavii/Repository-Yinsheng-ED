@@ -1,8 +1,8 @@
-#ifndef SQUADSMANAGMENT_H
-#define SQUADSMANAGMENT_H
+#ifndef SQUADMANAGER_H
+#define SQUADMANAGER_H
 #include <iostream>
-#include "outools.h"
-#include "structs.h"
+#include "../outools.h"
+#include "../structs.h"
 #include <vector>
 using namespace std;
 
@@ -530,4 +530,4 @@ void MostrarTotalEscuadrones(SquadsPtr squad_list)
     coutf(BLUE, "---------------------------------------\n");
 }
 
-#endif // SQUADSMANAGMENT_H
+#endif // SQUADMANAGER_H
