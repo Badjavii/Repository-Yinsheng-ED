@@ -1,8 +1,8 @@
-#ifndef ZGRPSMANAGMENT_H
-#define ZGRPSMANAGMENT_H
+#ifndef ZOMBIEMANAGER_H
+#define ZOMBIEMANAGER_H
 #include <iostream>
-#include "outools.h"
-#include "structs.h"
+#include "../outools.h"
+#include "../structs.h"
 #include <vector>
 using namespace std;
 
@@ -319,4 +319,4 @@ void EliminarZombie(Zombies_GroupsPtr current_group)
     system("pause");
 }
 
-#endif // ZGRPSMANAGMENT_H
+#endif // ZOMBIEMANAGER_H
