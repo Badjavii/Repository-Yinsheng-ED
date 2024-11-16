@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
     // Introdución al lore del juego
-    coutf(YELLOW, "HOLA¿Deseas omitir la intro? (1. Si | 2. No)\n");
+    coutf(YELLOW, "HOLACOMOTAS¿Deseas omitir la intro? (1. Si | 2. No)\n");
     int op = -1;
     cinv("int", op);
     while (op != 1 && op != 2) // Validar ¿1 o 2?
