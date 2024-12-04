@@ -1,12 +1,9 @@
 #include <iostream>
-#include "libs/dialogues.h"
-#include "libs/outools.h"
+#include "libs/sources/dialogues.h"
+#include "libs/sources/outools.h"
 #include "libs/structs.h"
 #include "libs/menus.h"
-// #include "libs/DocManager.h"          // Libreria para el manejo de archivos de texto (COMING SOON)
-// #include "libs/Datos/maps.txt"        // Archivo de texto
-// #include "libs/Datos/squads.txt"      // Archivo de texto
-// #include "libs/Datos/zombies.txt"     // Archivo de texto
+#include "libs/00-import-export/00-import-export.h"
 using namespace std;
 
 int main()

@@ -1,4 +1,0 @@
-#ifndef IMPORT - EXPORT_H
-#define IMPORT -EXPORT_H
-
-#endif // IMPORT-EXPORT_H

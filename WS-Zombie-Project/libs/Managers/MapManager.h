@@ -34,7 +34,7 @@ void LiberarMapa(MapaPtr *mapa)
 
 void EliminarEstacion(MapaPtr *mapa)
 {
-    MostrarTotalMaps((*mapa)->estaciones);
+    //MostrarTotalMaps((*mapa)->estaciones);
     string nombre;
     coutf(BLUE, "Ingrese el nombre de la estación a eliminar: ");
     cinv("string", nombre);
