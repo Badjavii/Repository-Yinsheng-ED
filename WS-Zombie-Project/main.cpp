@@ -3,7 +3,7 @@
 #include "libs/sources/outools.h"
 #include "libs/structs.h"
 #include "libs/menus.h"
-#include "libs/00-import-export/00-import-export.h"
+#include "00-import-export/import-00-export.h"
 using namespace std;
 
 int main()
@@ -34,7 +34,7 @@ int main()
     MapaPtr mapa = new Mapa;
 
     // Importar datos desde el archivo txt (COMING SOON)
-    // importarDatos(&squad_list, &zombies_groups_list, &mapa, "squads.txt", "zombies.txt", "maps.txt");
+    importar(&squad_list, &mapa,&Zombies_Groups)
 
     // Inicio Gestion del Programa
     Principal_Menu(&squad_list, &zombies_groups_list, &mapa);

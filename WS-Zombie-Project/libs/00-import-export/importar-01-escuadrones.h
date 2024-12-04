@@ -1,5 +1,5 @@
-#ifndef 01-IMPORTAR-ESCUADRONES_H
-#define 01-IMPORTAR-ESCUADRONES_H
+#ifndef IMPORTAR-01-ESCUADRONES_H
+#define IMPORTAR-01-ESCUADRONES_H
 #include "../sources/structs.h"
 
 void importar_escuadrones(Squads** Lista_escuadrones){
@@ -8,4 +8,4 @@ void importar_escuadrones(Squads** Lista_escuadrones){
     return;
 };
 
-#endif // 01-IMPORTAR-ESCUADRONES_H
+#endif // IMPORTAR-01-ESCUADRONES_H
