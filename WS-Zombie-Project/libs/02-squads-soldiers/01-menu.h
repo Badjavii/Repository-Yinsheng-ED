@@ -1,3 +1,7 @@
+#ifndef FILE00_MENU_H
+#define FILE00_MENU_H
+#include "../sources/outools.h"
+#include "../sources/structs.h"
 
 
 void Menu_Squads(SquadsPtr *squad_list)
@@ -35,3 +39,5 @@ void Menu_Squads(SquadsPtr *squad_list)
         }
     }
 }
+
+#endif // FILE00_MENU_H

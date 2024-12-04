@@ -1,9 +1,9 @@
 #ifndef MENUS_H
 #define MENUS_H
 #include <iostream>
-#include "outools.h"
-#include "structs.h"
-#include "Managers/SquadManager.h"
+#include "libs/sources/outools.h"
+#include "libs/sources/structs.h"
+#include "libs/Managers/SquadManager.h"
 #include "Managers/ZombieManager.h"
 #include "Managers/MapManager.h"
 using namespace std;

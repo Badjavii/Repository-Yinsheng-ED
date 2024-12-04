@@ -1,8 +1,8 @@
 #ifndef SQUADMANAGER_H
 #define SQUADMANAGER_H
 #include <iostream>
-#include "../outools.h"
-#include "../structs.h"
+#include "../sources/outools.h"
+#include "../sources/structs.h"
 #include <vector>
 using namespace std;
 

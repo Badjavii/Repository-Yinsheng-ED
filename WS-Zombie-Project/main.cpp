@@ -1,15 +1,15 @@
 #include <iostream>
 #include "libs/sources/dialogues.h"
 #include "libs/sources/outools.h"
-#include "libs/structs.h"
+#include "libs/sources/structs.h"
 #include "libs/menus.h"
-#include "00-import-export/import-00-export.h"
+#include "libs/00-import-export/file00-import-export.h"
 using namespace std;
 
 int main()
 {
     // Introdución al lore del juego
-    coutf(YELLOW, "HOLACOMOTAS¿Deseas omitir la intro? (1. Si | 2. No)\n");
+    coutf(YELLOW, "¿Deseas omitir la intro? (1. Si | 2. No)\n");
     int op = -1;
     cinv("int", op);
     while (op != 1 && op != 2) // Validar ¿1 o 2?
@@ -34,7 +34,7 @@ int main()
     MapaPtr mapa = new Mapa;
 
     // Importar datos desde el archivo txt (COMING SOON)
-    importar(&squad_list, &mapa,&Zombies_Groups)
+    importar(&squad_list, &mapa->estaciones,&zombies_groups_list);
 
     // Inicio Gestion del Programa
     Principal_Menu(&squad_list, &zombies_groups_list, &mapa);
