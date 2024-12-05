@@ -2,9 +2,9 @@
 #define MENU_H
 #include <iostream>
 #include "../sources/structs.h"
-#include "../02-squads-soldiers"
-#include "../03-zombies"
-#include "../04-map"
+#include "../02-squads-soldiers/file00-menu.h"
+#include "../03-zombies/file00-menu.h"
+#include "../04-map/file00-menu.h"
 using namespace std;
 
 void Principal_Menu(Squads **squad_l, Zombies_Groups **zombies_grop_l, Mapa **mapa_g)

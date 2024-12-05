@@ -33,8 +33,11 @@ int main()
     Zombies_GroupsPtr zombies_groups_list = nullptr;
     MapaPtr mapa = new Mapa;
 
-    // Importar datos desde el archivo txt (COMING SOON)
+    // Importar datos desde archivos txt (COMING SOON)
+    showProgressSpinner(3000, "Importando Datos del Sistema");
     importar(&squad_list, &mapa->estaciones,&zombies_groups_list);
+    PAUSE_TERMINAL;
+    CLEAR_SCREEN;
 
     // Inicio Gestion del Programa
     Principal_Menu(&squad_list, &zombies_groups_list, &mapa);
@@ -48,7 +51,7 @@ int main()
     LiberarEscuadrones(&squad_list);      // Liberar los escuadrones
     LiberarZombies(&zombies_groups_list); // Liberar los grupos zombies
     LiberarMapa(&mapa);                   // Liberar el mapa
-    showProgressSpinner(3000, "Exportandos Datos del Sistema");
+    showProgressSpinner(3000, "Exportando Datos del Sistema");
     showProgressSpinner(3000, "Liberando Memoria");
     showProgressSpinner(1000, "Saliendo del Programa");
 
