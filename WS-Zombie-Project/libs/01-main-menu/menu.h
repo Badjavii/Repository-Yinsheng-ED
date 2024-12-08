@@ -34,10 +34,10 @@ void Principal_Menu(Squads **squad_l, Zombies_Groups **zombies_grop_l, Mapa **ma
             break;
         case 2:
             /* Management of the Zombies Groups*/
-            Menu_ZombieGroups(&zombies_groups_list, &squad_list);
+            //Menu_ZombieGroups(&zombies_groups_list, &squad_list);
             break;
         case 3:
-            Menu_Mapa(&mapa, &squad_list, &zombies_groups_list);
+            //Menu_Mapa(&mapa, &squad_list, &zombies_groups_list);
             break;
         case 0:
             // Salir
@@ -47,6 +47,6 @@ void Principal_Menu(Squads **squad_l, Zombies_Groups **zombies_grop_l, Mapa **ma
         }
         PAUSE_TERMINAL;
     }
-}
+};
 
 #endif // MENU_H

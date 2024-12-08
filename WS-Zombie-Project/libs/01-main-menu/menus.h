@@ -1,7 +1,7 @@
 #ifndef MENUS_H
 #define MENUS_H
 #include <iostream>
-#include "outools.h"
+#include "../sources/outools.h"
 #include "structs.h"
 #include "Managers/SquadManager.h"
 #include "Managers/ZombieManager.h"

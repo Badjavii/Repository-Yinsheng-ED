@@ -2,8 +2,9 @@
 #include "libs/sources/dialogues.h"
 #include "libs/sources/outools.h"
 #include "libs/sources/structs.h"
-#include "libs/menus.h"
+#include "libs/01-main-menu/menu.h"
 #include "libs/00-import-export/file00-import-export.h"
+#include "libs/05-liberar/file00-liberar.h"
 using namespace std;
 
 int main()
@@ -29,30 +30,29 @@ int main()
     CLEAR_SCREEN;
 
     // Inicializacion de estructuras dinamicas
-    SquadsPtr squad_list = nullptr;
-    Zombies_GroupsPtr zombies_groups_list = nullptr;
-    MapaPtr mapa = new Mapa;
+    Squads* lista_escuadrones = nullptr;
+    Zombies_Groups* lista_grupos_zombies = nullptr;
+    Mapa* grafo_mapa = new Mapa;
 
     // Importar datos desde archivos txt (COMING SOON)
     showProgressSpinner(3000, "Importando Datos del Sistema");
-    importar(&squad_list, &mapa->estaciones,&zombies_groups_list);
+    importar(&lista_escuadrones, &grafo_mapa->estaciones,&lista_grupos_zombies);
     PAUSE_TERMINAL;
     CLEAR_SCREEN;
 
     // Inicio Gestion del Programa
-    Principal_Menu(&squad_list, &zombies_groups_list, &mapa);
+    Principal_Menu(&lista_escuadrones, &lista_grupos_zombies, &grafo_mapa);
 
     // Batalla de los zombies (COMING SOON)
     // ......................
     // ......................
 
-    // Fin del Programa: exportar y liberar datos
-    // export_data(squad_list, zombies_groups_list, mapa);      // Exportar datos hacia el archivo txt (COMING SOON)
-    LiberarEscuadrones(&squad_list);      // Liberar los escuadrones
-    LiberarZombies(&zombies_groups_list); // Liberar los grupos zombies
-    LiberarMapa(&mapa);                   // Liberar el mapa
-    showProgressSpinner(3000, "Exportando Datos del Sistema");
-    showProgressSpinner(3000, "Liberando Memoria");
+    // Fin del Programa: liberar datos
+    LiberarEscuadrones(&lista_escuadrones);      // Liberar los escuadrones
+    LiberarZombies(&lista_grupos_zombies); // Liberar los grupos zombies
+    LiberarMapa(&grafo_mapa);                   // Liberar el mapa
+    showProgressSpinner(2000, "Exportando Datos del Sistema");
+    showProgressSpinner(2000, "Liberando Memoria");
     showProgressSpinner(1000, "Saliendo del Programa");
 
     return 0;

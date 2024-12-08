@@ -2,9 +2,13 @@
 #define FILE00_MENU_H
 #include "../sources/outools.h"
 #include "../sources/structs.h"
+#include "file01-crear-escuadron.h"
+#include "file02-consultar-escuadrones.h"
+#include "file03-editar-escuadrones.h"
+#include "file04-eliminar-escuadron.h"
 
 
-void Menu_Squads(SquadsPtr *squad_list)
+void Menu_Squads(Squads **lista_escuadrones)
 {
     int op = -1;
 
@@ -23,20 +27,21 @@ void Menu_Squads(SquadsPtr *squad_list)
         switch (op)
         {
         case 1:
-            CrearEscuadron(squad_list);
+            //CrearEscuadron(lista_escuadrones);
             break;
         case 2:
-            ConsultarEscuadrones(squad_list);
+            ConsultarEscuadrones(lista_escuadrones);
             break;
         case 3:
-            Menu_EditarEscuadron(*squad_list);
+            Menu_EditarEscuadron(*lista_escuadrones);
             break;
         case 4:
-            EliminarEscuadron(squad_list);
+            EliminarEscuadron(lista_escuadrones);
             break;
         default:
             break;
         }
+        PAUSE_TERMINAL;
     }
 }
 

@@ -4,7 +4,6 @@
 
 void importar_gruposZ(Zombies_Groups** Lista_gruposZ){
     // Codigo
-    cout << "\nHola mundo" << endl;
     return;
 };
 

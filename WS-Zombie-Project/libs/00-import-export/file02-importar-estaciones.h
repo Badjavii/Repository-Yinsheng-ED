@@ -5,7 +5,6 @@
 void importar_estaciones(Estacion ** Grafo_mapa){
 
     // codigo 
-    cout << "\nHola mundo" << endl;
     return;
 };
 
