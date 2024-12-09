@@ -27,7 +27,7 @@ void Menu_Squads(Squads **lista_escuadrones)
         switch (op)
         {
         case 1:
-            //CrearEscuadron(lista_escuadrones);
+            CrearEscuadron(lista_escuadrones);
             break;
         case 2:
             ConsultarEscuadrones(lista_escuadrones);

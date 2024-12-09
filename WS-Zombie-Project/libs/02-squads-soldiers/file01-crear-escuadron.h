@@ -31,7 +31,7 @@ void CrearEscuadron(SquadsPtr *squad_list)
     *squad_list = new_squad;
 
     coutf(GREEN, "Escuadrón creado exitosamente.\n");
-    system("pause");
+    return;
 }
 
 #endif

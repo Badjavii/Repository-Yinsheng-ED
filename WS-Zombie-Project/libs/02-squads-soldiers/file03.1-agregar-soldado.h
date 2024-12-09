@@ -85,7 +85,7 @@ void AgregarSoldado(SquadsPtr current_squad)
 
     // Asignar equipo al soldado
     new_soldier->equipment = new Soldier_Equipment;
-    // AsignarItems(new_soldier->equipment);
+    AsignarItems(new_soldier->equipment);
     
     new_soldier->XP = (new_soldier->equipment->item1->xp + new_soldier->equipment->item2->xp + new_soldier->equipment->item3->xp);
 

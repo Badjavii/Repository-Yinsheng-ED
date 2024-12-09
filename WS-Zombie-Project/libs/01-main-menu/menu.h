@@ -3,7 +3,7 @@
 #include <iostream>
 #include "../sources/structs.h"
 #include "../02-squads-soldiers/file00-menu.h"
-#include "../03-zombies/file00-menu.h"
+#include "../03-zombies/file00-menu-zombies.h"
 #include "../04-map/file00-menu.h"
 using namespace std;
 
@@ -34,7 +34,7 @@ void Principal_Menu(Squads **squad_l, Zombies_Groups **zombies_grop_l, Mapa **ma
             break;
         case 2:
             /* Management of the Zombies Groups*/
-            //Menu_ZombieGroups(&zombies_groups_list, &squad_list);
+            Menu_ZombieGroups(&zombies_groups_list, &squad_list);
             break;
         case 3:
             //Menu_Mapa(&mapa, &squad_list, &zombies_groups_list);
