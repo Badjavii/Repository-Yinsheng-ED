@@ -60,8 +60,8 @@ void EditarSoldado(SquadsPtr current_squad)
     else
     {
         coutf(RED, "Soldado no encontrado.\n");
-        PAUSE_TERMINAL;
     }
+    return;
 }
 
 #endif

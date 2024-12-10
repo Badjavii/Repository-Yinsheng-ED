@@ -37,11 +37,14 @@ void Menu_ZombieGroups(Zombies_GroupsPtr *zombie_group_list, SquadsPtr *squad_li
         case 4:
             EliminarGrupoZombie(zombie_group_list);
             break;
+        case 0:
+            return;
         default:
             break;
         }
         PAUSE_TERMINAL;
     }
+    return;
 };
 
 #endif 

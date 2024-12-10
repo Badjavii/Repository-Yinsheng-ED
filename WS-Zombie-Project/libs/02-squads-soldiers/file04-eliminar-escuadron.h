@@ -43,7 +43,7 @@ void EliminarEscuadron(SquadsPtr *squad_list)
     {
         coutf(RED, "Escuadrón no encontrado.\n");
     }
-    system("pause");
+    return;
 }
 
 #endif

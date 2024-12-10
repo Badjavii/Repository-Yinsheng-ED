@@ -12,7 +12,6 @@ void Menu_EditarEscuadron(Squads* lista_escuadrones)
     if (isSquadsListEmpty(lista_escuadrones) == true)
     {
         coutf(RED, "La lista de escuadrones está vacía.\n");
-        PAUSE_TERMINAL;
         return;
     }
 
@@ -66,10 +65,11 @@ void Menu_EditarEscuadron(Squads* lista_escuadrones)
             return;
         default:
             coutf(RED, "Opción inválida. Inténtalo de nuevo.\n");
-            PAUSE_TERMINAL;
             break;
         }
+        PAUSE_TERMINAL;
     }
+    return;
 }
 
 #endif // FILE01_EDITAR_H

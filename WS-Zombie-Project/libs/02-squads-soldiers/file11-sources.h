@@ -83,7 +83,6 @@ void ConsultarEscuadrones(SquadsPtr *squad_list)
     if (isSquadsListEmpty(*squad_list))
     {
         coutf(RED, "No hay escuadrones disponibles.\n");
-        system("pause");
         return;
     }
 

@@ -93,7 +93,7 @@ void AgregarSoldado(SquadsPtr current_squad)
     current_squad->soldiers = new_soldier;
 
     coutf(GREEN, "Soldado agregado exitosamente.\n");
-    system("pause");
+    return;
 };
 
 #endif // FILE01.1_AGREGAR_SOLDADO_H

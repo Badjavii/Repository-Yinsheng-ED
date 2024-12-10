@@ -35,7 +35,7 @@ void EliminarSoldado(SquadsPtr actual_escuadron)
     {
         coutf(RED, "Soldado no encontrado.\n");
     }
-    system("pause");
+    return;
 }
 
 #endif

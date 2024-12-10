@@ -13,7 +13,7 @@ void CrearGrupoZombie(Zombies_GroupsPtr *zombie_group_list)
     *zombie_group_list = new_group;
 
     coutf(GREEN, "Grupo zombie creado exitosamente.\n");
-    system("pause");
+    return;
 }
 
 #endif

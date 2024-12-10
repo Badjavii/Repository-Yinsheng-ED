@@ -12,7 +12,6 @@ void Menu_EditarGrupoZombie(Zombies_GroupsPtr zombie_group_list, SquadsPtr squad
     if (zombie_group_list == nullptr)
     {
         coutf(RED, "No hay grupos zombies para editar.\n");
-        PAUSE_TERMINAL;
         return;
     }
 
@@ -90,6 +89,7 @@ void Menu_EditarGrupoZombie(Zombies_GroupsPtr zombie_group_list, SquadsPtr squad
         }
         PAUSE_TERMINAL;
     }
+    return;
 }
 
 #endif

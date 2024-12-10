@@ -38,6 +38,8 @@ void Menu_Squads(Squads **lista_escuadrones)
         case 4:
             EliminarEscuadron(lista_escuadrones);
             break;
+        case 0:
+            return;
         default:
             break;
         }
