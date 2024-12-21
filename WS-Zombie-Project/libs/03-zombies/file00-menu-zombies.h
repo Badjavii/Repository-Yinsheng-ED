@@ -44,7 +44,6 @@ void Menu_ZombieGroups(Zombies_GroupsPtr *zombie_group_list, SquadsPtr *squad_li
         }
         PAUSE_TERMINAL;
     }
-    return;
 };
 
 #endif 

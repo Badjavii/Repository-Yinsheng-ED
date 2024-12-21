@@ -1,7 +1,11 @@
-#ifndef FILE00_MENU_H
-#define FILE00_MENU_H
+#ifndef FILE00_MENU_MAPS_H
+#define FILE00_MENU_MAPS_H
 #include "../sources/structs.h"
 #include "../sources/outools.h"
+#include "file01-crear-estacion.h"
+#include "file02-editar-estacion.h"
+#include "file03-eliminar-estacion.h"
+#include "file05-sources.h"
 
 void Menu_Mapa(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr *zombies_groups_list)
 {
@@ -40,4 +44,4 @@ void Menu_Mapa(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr *zombies_
     }
 }
 
-#endif // FILE00_MENU_H
+#endif // FILE00_MENU_MAPS_H
