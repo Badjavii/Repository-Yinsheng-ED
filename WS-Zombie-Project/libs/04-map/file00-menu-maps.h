@@ -37,6 +37,8 @@ void Menu_Mapa(MapaPtr *mapa, SquadsPtr *squad_list, Zombies_GroupsPtr *zombies_
         case 4:
             EliminarEstacion(mapa);
             break;
+        case 0:
+            return;
         default:
             break;
         }
