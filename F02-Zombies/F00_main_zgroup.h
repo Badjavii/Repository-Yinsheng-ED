@@ -27,7 +27,7 @@
  * @return La función no retorna ningún valor.
  **/
 
-void Menu_Zgroups(Zgroup **zgroup_list, squad **squad_list, bpck **backpack_list, soldier **fallen_soldier_list, zombie **fallen_zombie_list)
+void Menu_Zgroups(Zgroup **zgroup_list, squad **squad_list, bpck **backpack_list, soldier **fallen_soldier_list, zombie **fallen_zombie_list, vector<zombie *> type_Zombies)
 {
     int op = -1, x;
 
@@ -80,7 +80,7 @@ void Menu_Zgroups(Zgroup **zgroup_list, squad **squad_list, bpck **backpack_list
                 break;
             }
 
-            manageZombies_Zgroup(zgroup_list, (searchZgroup(*zgroup_list, x)), fallen_zombie_list, squad_list, fallen_soldier_list, backpack_list);
+            manageZombies_Zgroup(zgroup_list, (searchZgroup(*zgroup_list, x)), fallen_zombie_list, squad_list, fallen_soldier_list, backpack_list, type_Zombies);
             break;
         case 4:
             coutf(YELLOW, "\nNOTA: Eliminar a un grupo implica que todos sus zombies seran eliminados en caso de hayan.");

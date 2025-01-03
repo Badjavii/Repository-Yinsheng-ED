@@ -98,7 +98,7 @@ void manageSoldiers_Squad(squad **squad_list, squad *target_squad, soldier **fal
 
             if (existsSoldier(current_squad->list_soldiers, chain) == false)
             {
-                coutf(RED, "\nNo existe el soldado" + chain + ".");
+                coutf(RED, "\nNo existe el soldado " + chain + ".");
                 break;
             }
 
@@ -268,7 +268,7 @@ void manageSoldiers_Squad(squad **squad_list, squad *target_squad, soldier **fal
                 break;
             }
 
-            useAttack_item(searchBpck(*backpack_list, chain)->list_items, chain, x, searchZgroupWithZombie(*zgroup_list, x), zgroup_list, fallen_zombie_list);
+            useAttack_item(&(searchBpck(*backpack_list, chain)->list_items), chain, x, searchZgroupWithZombie(*zgroup_list, x), zgroup_list, fallen_zombie_list);
             break;
         case 8:
             show_soldiers(current_squad->list_soldiers);

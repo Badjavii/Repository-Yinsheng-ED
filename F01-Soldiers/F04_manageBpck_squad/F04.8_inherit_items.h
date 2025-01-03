@@ -29,6 +29,13 @@ void inherit_Items(squad *object_squad, string name, bpck **backpack_list)
 {
     // Buscar el soldado que tiene la mochila 'name'
     soldier *current_soldier = searchSoldier(object_squad->list_soldiers, name);
+
+    // PRUEBA
+    if ((current_soldier == nullptr) || (current_soldier->backpag == nullptr) || (current_soldier->backpag->list_items == nullptr))
+    {
+        return;
+    }
+
     bpck *current_bpck = current_soldier->backpag;
 
     // Verificar si hay más de un soldado en el escuadrón

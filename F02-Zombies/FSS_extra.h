@@ -211,4 +211,26 @@ void showSummaryZombie(zombie *soldier_list)
     return;
 };
 
+/**
+ * @brief Muestra los tipos de zombies que hay en el vector.
+ *
+ * @param types_Zombies Vector de punteros a zombies.
+ * @details La función recorre el vector y muestra la información de cada tipo de zombie.
+ */
+void showZombieTypes(const vector<zombie *> &types_Zombies)
+{
+    coutf(BLUE, "\n\nTIPOS DE ZOMBIES PREDETERMINADOS\n");
+    coutf(BLUE, "------------------------------\n");
+
+    for (size_t i = 0; i < types_Zombies.size(); ++i)
+    {
+        coutf(BLUE, "ZOMBIE #" + to_string(i + 1) + ":\n");
+        coutf(BLUE, "Tipo: " + types_Zombies[i]->type + "\n");
+        coutf(BLUE, "Daño: " + to_string(types_Zombies[i]->damage) + "\n");
+        coutf(BLUE, "Vida: " + to_string(types_Zombies[i]->health) + "\n");
+        coutf(BLUE, "------------------------------\n");
+    }
+    return;
+}
+
 #endif // FSS_EXTRA_H

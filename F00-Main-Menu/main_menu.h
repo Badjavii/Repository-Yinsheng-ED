@@ -22,7 +22,7 @@
  * @return La función no retorna ningún valor.
  */
 
-void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier **fallen_soldier_l, vector<item *> pre_items, Zgroup **zgroup_l, zombie **fallen_zombie_list)
+void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier **fallen_soldier_l, vector<item *> pre_items, Zgroup **zgroup_l, zombie **fallen_zombie_list, vector<zombie *> type_Zombies)
 {
 
     squad *squad_list = *squad_l;
@@ -65,7 +65,7 @@ void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier 
                 @param **zombies_groups_list Es un puntero doble a la lista de grupos de zombies.
                 @param **squad_list Es un puntero doble a la lista de escuadrones.
             */
-            Menu_Zgroups(&zgroup_list, &squad_list, &backpack_list, fallen_soldier_l, fallen_zombie_list);
+            Menu_Zgroups(&zgroup_list, &squad_list, &backpack_list, fallen_soldier_l, fallen_zombie_list, type_Zombies);
             break;
         case 3:
             /*

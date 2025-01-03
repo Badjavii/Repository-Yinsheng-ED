@@ -18,11 +18,13 @@ int main()
     zombie *fallen_zombie_list = nullptr;
     station *station_list = nullptr;
     vector<item *> pre_items;
+    vector<zombie *> types_zombies;
 
     // Lectura de archivos e importación de datos
-    import_Items(pre_items);
+    import_Items(pre_items);       // Importar items predeterminados
+    import_Zombies(types_zombies); // Importar tipos de zombies
 
-    main_menu(&squad_list, &backpack_list, &station_list, &fallen_soldiers_list, pre_items, &zgroups_list, &fallen_zombie_list);
+    main_menu(&squad_list, &backpack_list, &station_list, &fallen_soldiers_list, pre_items, &zgroups_list, &fallen_zombie_list, types_zombies);
 
     return 0;
 }

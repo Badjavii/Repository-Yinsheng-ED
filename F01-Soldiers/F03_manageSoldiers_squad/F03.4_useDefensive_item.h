@@ -69,7 +69,7 @@ int useDefensive_item(string soldier_name, item **item_list, int damage)
         return new_damage;
     }
     else
-        coutf(RED, "\nNo hay ningun item de supervivencia en la mochila de " + soldier_name + ".");
+        coutf(RED, "\nNo hay ningun item de defensa en la mochila de " + soldier_name + ".");
     return damage;
 };
 

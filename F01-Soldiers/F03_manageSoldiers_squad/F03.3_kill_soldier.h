@@ -22,6 +22,7 @@
 
 void kill_Soldier(squad **squad_list, squad *target_squad, string name, soldier **falle_soldier_list, bpck **backpack_list)
 {
+
     // Heredar la mochila del soldado a eliminar
     inherit_Items(target_squad, name, backpack_list);
 

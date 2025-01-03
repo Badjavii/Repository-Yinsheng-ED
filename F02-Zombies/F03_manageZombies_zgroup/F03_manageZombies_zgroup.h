@@ -1,5 +1,6 @@
 #ifndef F03_MANAGEZOMBIES_ZGROUP_H
 #define F03_MANAGEZOMBIES_ZGROUP_H
+#include <vector>
 #include "../../Sources/outools.h"
 #include "../../Sources/struct.h"
 #include "F03.1_add_zombie.h"
@@ -12,7 +13,7 @@
 #include "../../F01-Soldiers/FZZ_extra.h"
 #include "../../F01-Soldiers/F02_consult_squad.h"
 
-void manageZombies_Zgroup(Zgroup **zgroup_list, Zgroup *target_zgroup, zombie **fallen_zombie_list, squad **squad_list, soldier **fallen_soldier_list, bpck **backpack_list)
+void manageZombies_Zgroup(Zgroup **zgroup_list, Zgroup *target_zgroup, zombie **fallen_zombie_list, squad **squad_list, soldier **fallen_soldier_list, bpck **backpack_list, vector<zombie *> type_Zombies)
 {
     Zgroup *current_zgroup = target_zgroup;
     int op = -1, x, y, z;
@@ -47,6 +48,31 @@ void manageZombies_Zgroup(Zgroup **zgroup_list, Zgroup *target_zgroup, zombie **
             if (existsZombieInGroup(*zgroup_list, x) == true)
             {
                 coutf(RED, "\nYa existe un soldado con ese ID. Intentalo de nuevo.");
+                break;
+            }
+
+            coutf(BLUE, "\nDeseas incluir un tipo de zombie predeterminado o crear un nuevo tipo de zombie?");
+            coutf(BLUE, "\nNOTA: El tipo del zombie se relaciona con sus valores de daño y de vida.");
+
+            do
+            {
+                coutf(BLUE, "\n1. Tipo Predeterminado  |  2. Tipo Nuevo\n");
+                cinv("int", y);
+            } while ((y != 1) && (y != 2));
+
+            if (y == 1)
+            {
+                showZombieTypes(type_Zombies);
+
+                do
+                {
+                    coutf(BLUE, "\nIngresa el numero del tipo de zombie predeterminado\n");
+                    cinv("int", y);
+                } while ((y > type_Zombies.size()) || (y < 1));
+
+                y--;
+
+                add_Zombie(&(current_zgroup->list_zombies), create_Zombie(x, type_Zombies[y]->type, type_Zombies[y]->health, type_Zombies[y]->damage));
                 break;
             }
 

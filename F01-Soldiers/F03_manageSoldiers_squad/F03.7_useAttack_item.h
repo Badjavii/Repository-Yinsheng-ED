@@ -3,6 +3,7 @@
 #include "../../Sources/outools.h"
 #include "../../Sources/struct.h"
 #include "../../F02-Zombies/FSS_extra.h"
+#include "../F04_manageBpck_squad/F04.5_delete_item.h"
 #include "../../F02-Zombies/F03_manageZombies_zgroup/F03.5_hurt_zombie.h"
 #include "../FZZ_extra.h"
 
@@ -14,14 +15,14 @@
  * @param zgroup Puntero al grupo de zombies.
  * @details La función busca el ítem de ataque más adecuado para hacer daño al zombie especificado y aplica el daño utilizando la función hurt_Zombie.
  */
-void useAttack_item(item *item_list, string soldier_name, int zombie_id, Zgroup *zgroup, Zgroup **zgroup_list, zombie **fallen_zombies_list)
+void useAttack_item(item **item_list, string soldier_name, int zombie_id, Zgroup *zgroup, Zgroup **zgroup_list, zombie **fallen_zombies_list)
 {
     // Buscar el zombie en el grupo
     zombie *target_zombie = searchZombie(zgroup->list_zombies, zombie_id);
 
     if (target_zombie != nullptr)
     {
-        item *current_item = item_list;
+        item *current_item = *item_list;
         item *best_item = nullptr;
 
         // Encontrar el ítem de ataque más adecuado
@@ -52,7 +53,7 @@ void useAttack_item(item *item_list, string soldier_name, int zombie_id, Zgroup 
             // Si los usos del ítem son 0, eliminarlo
             if (best_item->usages == 0)
             {
-                delete_Item(&item_list, best_item->name, best_item->usages, best_item->effect_value);
+                delete_Item(item_list, best_item->name, best_item->usages, best_item->effect_value);
             }
 
             // Aplicar el daño al zombie

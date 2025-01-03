@@ -138,6 +138,41 @@ int generateRandomNumber(int lower_limit, int upper_limit)
     return dis(gen);
 }
 
+/**
+ * @brief Convierte una cadena de caracteres a un entero.
+ *
+ * @param pepe Cadena de caracteres a convertir.
+ *
+ * @return int El valor entero convertido. Devuelve -1 si la conversión falla.
+ */
+int sTOi(const string &pepe)
+{
+    // Eliminar espacios en blanco al principio y al final
+    string trimmed_pepe = pepe;
+    trimmed_pepe.erase(trimmed_pepe.begin(), find_if(trimmed_pepe.begin(), trimmed_pepe.end(), [](unsigned char ch)
+                                                     { return !isspace(ch); }));
+    trimmed_pepe.erase(find_if(trimmed_pepe.rbegin(), trimmed_pepe.rend(), [](unsigned char ch)
+                               { return !isspace(ch); })
+                           .base(),
+                       trimmed_pepe.end());
+
+    // Verificar si la cadena resultante está vacía
+    if (trimmed_pepe.empty())
+    {
+        return -1;
+    }
+
+    // Verificar si todos los caracteres son dígitos
+    for (char c : trimmed_pepe)
+    {
+        if (!isdigit(c))
+        {
+            return -1;
+        }
+    }
+    return stoi(trimmed_pepe);
+};
+
 /*void showProgressSpinner(int duration, const string& message) {
     using namespace indicators;
 
