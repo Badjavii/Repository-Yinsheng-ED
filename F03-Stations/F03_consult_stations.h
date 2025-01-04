@@ -50,6 +50,6 @@ void consult_Station(station *station_list)
     }
 
     return;
-}
+};
 
 #endif // F03_CONSULT_STATIONS_H

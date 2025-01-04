@@ -4,6 +4,7 @@
 #include "../Sources/struct.h"
 #include "../F01-Soldiers/F00_main_squads.h"
 #include "../F02-Zombies/F00_main_zgroup.h"
+#include "../F03-Stations/F00_main_stations.h"
 
 /**
  * @brief Función que muestra el menú principal y maneja las opciones seleccionadas por el usuario.
@@ -75,7 +76,7 @@ void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier 
                 @param **squad_list Es un puntero doble a la lista de escuadrones.
                 @param **zombies_groups_list Es un puntero doble a la lista de grupos de zombies.
             */
-            // Menu_Mapa(&mapa, &squad_list, &zombies_groups_list);
+            Menu_Stations(&zgroup_list, &squad_list, &station_list);
             break;
         case 0:
             // Salir del menú

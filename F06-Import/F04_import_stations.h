@@ -186,13 +186,10 @@ void import_Stations(vector<zombie *> &types_Zombies, station **station_list, Zg
             }
         }
 
-        cout << "HOLAAAAA ENTRE AQUI 1   |    ";
-
         // Leer las conexiones y almacenarlas en el vector
         getline(file, line); // Leer la siguiente línea para verificar si hay conexiones
         if (line != "---")
         {
-            cout << "HOLAAAAA ENTRE AQUI\n";
             if (!line.empty())
             {
                 string cadena;
@@ -229,10 +226,6 @@ void import_Stations(vector<zombie *> &types_Zombies, station **station_list, Zg
                     new_connection.destination_station = dest_number;
                     new_connection.weight = weight;
                     connections.push_back(new_connection);
-
-                    // PRUEBA
-                    cout << "Como quedo la cadena? : " << line << "\n";
-                    cout << "Origen: " << station_number << ", destino: " << dest_number << " y peso: " << weight << "\n";
                 }
             }
         }
@@ -240,8 +233,6 @@ void import_Stations(vector<zombie *> &types_Zombies, station **station_list, Zg
 
     file.close();
 
-    showConnections(connections);
-    PAUSE_TERMINAL;
     // Crear las conexiones usando el vector de "trios ordenados"
     createConnections(station_list, connections);
 }
