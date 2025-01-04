@@ -1,22 +1,26 @@
-# Repositorio de Estructuras de Datos - Yinsheng
+# Proyecto: Running Dead
 
-![This is an image](/sources/Zoom-100.jpeg)
+Repositorio para almacenar el código del proyecto "Running Dead" desarrollado para la materia de Algoritmos y Estructuras de Datos en C++.
+El proyecto se encuentra bajo la supervisión de Yinsheng Leon, profesor en la Universidad Católica Andrés Bello y profesional de la programación con más de 20 años de experiencia.
 
-## Objetivo
+## Sobre el Proyecto
 
-Este repositorio contiene:
+El proyecto consiste en desarrollar un videojuego sin interfaz gráfica, con una temática de zombies.
 
-- Materiales de apoyo
-- Ejercicios y programas en C++
-- Proyecto final: [Batalla de Zombies](/WS-Zombie-Project/)
+### Lore del Juego
 
-## Plan de Evaluación
+Nos encontramos en un mundo infectado por zombies, donde unos pocos sobrevivientes hacen lo posible para salvar al mundo. Estos sobrevivientes se encuentran en la situación de entrar a un sistema de estaciones subterráneas que se comunican entre sí para llevar la cura a un punto específico. El problema resulta en que en muchas de estas estaciones hay numerosos zombies. Los sobrevivientes se equiparán con armas y otros tipos de ítems, y conformarán equipos de soldados para llevar a cabo la misión desde distintos puntos.
 
-- **Examen Corto Teórico 1:**                   16/10/2024
-- **Examen Corto Práctico 1:**                  23/10/2024
-- **Primera Parte del Proyecto Zombie:**        27/10/2024 y 30/10/2024
-- **Parcial 1:**                                06/11/2024
-- **Examen Corto Teórico 2:**                   27/11/2024
-- **Examen Corto Práctico 2:**                  13/12/2024
-- **Proyecto Zombie:**                          20/12/2024 y 08/01/2025
-- **Parcial 2:**                                15/01/2025
+### Objetivos del Proyecto
+
+- Hacer uso de la memoria dinámica.
+- Diseñar e implementar estructuras de datos que puedan dar un resultado eficiente.
+- Desarrollar librerías que agilicen el trabajo y ayuden a la simpleza del archivo principal.
+
+## Equipo de Programadores
+
+Este repositorio y el código fueron orgullosamente diseñados por un fascinante equipo de estudiantes, entre los cuales se encuentran:
+
+- Azael Chacon.
+- Ricardo Pietro.
+- Javier Otero (aka. Badjavii, junior dev).
