@@ -5,10 +5,10 @@
 #include "FSS_extra.h"
 
 /**
- * @brief Muestra los nombres de los zombies que están vivos en cada grupo de zombies.
+ * @brief Muestra los zombies vivos por grupo.
  *
  * @param zgroup_list Lista de grupos de zombies.
- * @details La función recorre cada grupo de zombies y muestra los nombres de los zombies que están vivos.
+ * @details La función recorre cada grupo de zombies y muestra la información detallada de los zombies vivos en cada grupo.
  */
 
 void showLiving_Zombies(Zgroup *zgroup_list)
@@ -31,16 +31,44 @@ void showLiving_Zombies(Zgroup *zgroup_list)
             coutf(GREEN, "Estación: " + zgroup_list->target_station->name + ".\n");
         }
 
-        coutf(GREEN, "Zombies Vivos:\n");
-
-        zombie *current_zombie = zgroup_list->list_zombies;
-
-        while (current_zombie != nullptr)
+        int num_zombies = countZombie(zgroup_list->list_zombies);
+        if (num_zombies == 0)
         {
-            coutf(GREEN, "  - ID: " + to_string(current_zombie->id) + "\n");
-            coutf(GREEN, "    Tipo: " + current_zombie->type + "\n");
+            coutf(GREEN, "No hay zombies vivos en este grupo.\n");
+        }
+        else if (num_zombies > 3)
+        {
+            // Mostrar resumen de los zombies
+            zombie *current_zombie = zgroup_list->list_zombies;
+            while (current_zombie != nullptr)
+            {
+                int count = countTypesZombie(zgroup_list->list_zombies, current_zombie->type);
+                string type = current_zombie->type;
+                int damage = current_zombie->damage;
+                int health = current_zombie->health;
 
-            current_zombie = current_zombie->next;
+                coutf(GREEN, "  - " + to_string(count) + " zombies de tipo " + type +
+                                 " (daño " + to_string(damage) +
+                                 " y vida " + to_string(health) + ")\n");
+
+                // Saltar los zombies del mismo tipo
+                while (current_zombie != nullptr && current_zombie->type == type)
+                {
+                    current_zombie = current_zombie->next;
+                }
+            }
+        }
+        else
+        {
+            // Mostrar detalles de cada zombie
+            zombie *current_zombie = zgroup_list->list_zombies;
+            while (current_zombie != nullptr)
+            {
+                coutf(GREEN, "  - ID: " + to_string(current_zombie->id) + "\n");
+                coutf(GREEN, "    Tipo: " + current_zombie->type + "\n");
+
+                current_zombie = current_zombie->next;
+            }
         }
 
         coutf(GREEN, "-----------------------------\n");

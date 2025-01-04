@@ -1,5 +1,5 @@
-#ifndef FSS_EXTRA_H
-#define FSS_EXTRA_H
+#ifndef FJJ_EXTRA_H
+#define FJJ_EXTRA_H
 #include "../Sources/outools.h"
 #include "../Sources/struct.h"
 
@@ -14,7 +14,7 @@
  *
  * @return Todas las funciones retornan true si las listas están vacías, de lo contrario retornan false.
  **/
-
+/*Abrir comentario
 bool isZgroupListEmpty(Zgroup *zgroup_list)
 {
     return (zgroup_list == nullptr);
@@ -24,7 +24,7 @@ bool isZombieListEmpty(zombie *zombie_list)
 {
     return (zombie_list == nullptr);
 };
-
+cerrar comentario*/
 //******************* EXISTE EN LISTA ******************************/
 
 /**
@@ -42,7 +42,7 @@ bool isZombieListEmpty(zombie *zombie_list)
  * @return La función existsZombie retorna true si el zombie existe, de lo contrario retorna false.
  * @return La función existsZombieInGroup retorna true si el zombie existe en algún grupo, false en caso contrario.
  **/
-
+/*Abrir comentario
 bool existsZgroup(Zgroup *zgroup_list, int number)
 {
     while (zgroup_list != nullptr)
@@ -82,26 +82,7 @@ bool existsZombieInGroup(Zgroup *zgroup_list, int id)
     }
     return false;
 };
-
-/**
- * @brief Verifica si un tipo de zombie existe en el vector de tipos de zombies.
- *
- * @param types_Zombies Vector de punteros a zombies predeterminados.
- * @param type Nombre del tipo de zombie a verificar.
- * @return true si el tipo de zombie existe, false en caso contrario.
- */
-bool existsTypeZombie(const std::vector<zombie *> &types_Zombies, const std::string &type)
-{
-    for (const auto &zombie_type : types_Zombies)
-    {
-        if (zombie_type->type == type)
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
+cerrar comentario*/
 //******************* BUSCAR DENTRO DE LISTA ******************************/
 
 /**
@@ -121,17 +102,17 @@ bool existsTypeZombie(const std::vector<zombie *> &types_Zombies, const std::str
  * @return La función searchZgroupWithZombie retorna un puntero al grupo al que pertenece el zombie, o nullptr si no se encuentra.
  **/
 
-Zgroup *searchZgroup(Zgroup *zgroup_list, int number)
+station *searchStation(station *station_list, int number)
 {
-    while (zgroup_list != nullptr)
+    while (station_list != nullptr)
     {
-        if (zgroup_list->number == number)
-            return zgroup_list;
-        zgroup_list = zgroup_list->next;
+        if (station_list->number_station == number)
+            return station_list;
+        station_list = station_list->next;
     }
     return nullptr;
 };
-
+/*Abrir comentario
 zombie *searchZombie(zombie *zombie_list, int id)
 {
     while (zombie_list != nullptr)
@@ -155,7 +136,7 @@ Zgroup *searchZgroupWithZombie(Zgroup *zgroup_list, int id)
     }
     return nullptr;
 };
-
+cerrar comentario*/
 //******************* CONTAR DENTRO DE LISTA ******************************/
 
 /**
@@ -168,7 +149,7 @@ Zgroup *searchZgroupWithZombie(Zgroup *zgroup_list, int id)
  * @return La función countZgroup retorna el número de grupos en la lista.
  * @return La función countZombie retorna el número de zombies en la lista.
  **/
-
+/*Abrir comentario
 int countZgroup(Zgroup *zgroup_list)
 {
     int i = 0;
@@ -190,28 +171,7 @@ int countZombie(zombie *zombie_list)
     }
     return i;
 };
-
-/**
- * @brief Cuenta la cantidad de zombies de un tipo específico en una lista de zombies.
- *
- * @param zombie_list Lista de zombies.
- * @param type Tipo de zombie a contar.
- * @return La cantidad de zombies del tipo especificado en la lista.
- */
-int countTypesZombie(zombie *zombie_list, string type)
-{
-    int count = 0;
-    while (zombie_list != nullptr)
-    {
-        if (zombie_list->type == type)
-        {
-            count++;
-        }
-        zombie_list = zombie_list->next;
-    }
-    return count;
-};
-
+cerrar comentario*/
 //******************* MOSTRAR DENTRO DE LISTA ******************************/
 
 /**
@@ -226,7 +186,7 @@ int countTypesZombie(zombie *zombie_list, string type)
  *
  * @return Ninguna función retorna un valor.
  **/
-
+/*Abrir comentario
 void showSummaryZgroup(Zgroup *zgroup_list)
 {
     coutf(BLUE, "\n\nRESUMEN DE GRUPOS\n");
@@ -250,13 +210,14 @@ void showSummaryZombie(zombie *soldier_list)
     }
     return;
 };
-
+cerrar comentario*/
 /**
  * @brief Muestra los tipos de zombies que hay en el vector.
  *
  * @param types_Zombies Vector de punteros a zombies.
  * @details La función recorre el vector y muestra la información de cada tipo de zombie.
  */
+/*Abrir comentario
 void showZombieTypes(const vector<zombie *> &types_Zombies)
 {
     coutf(BLUE, "\n\nTIPOS DE ZOMBIES PREDETERMINADOS\n");
@@ -272,5 +233,5 @@ void showZombieTypes(const vector<zombie *> &types_Zombies)
     }
     return;
 }
-
-#endif // FSS_EXTRA_H
+cerrar comentario*/
+#endif // FJJ_EXTRA_H

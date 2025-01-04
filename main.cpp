@@ -6,6 +6,7 @@
 #include "F06-Import/F02_import_items.h"
 #include "F06-Import/F03_import_zombies.h"
 #include "F06-Import/F04_import_stations.h"
+#include "F03-Stations/F03_consult_stations.h"
 using namespace std;
 
 int main()
@@ -23,6 +24,10 @@ int main()
     // Lectura de archivos e importación de datos
     import_Items(pre_items);       // Importar items predeterminados
     import_Zombies(types_zombies); // Importar tipos de zombies
+    import_Stations(types_zombies, &station_list, &zgroups_list);
+
+    consult_Station(station_list);
+    PAUSE_TERMINAL;
 
     main_menu(&squad_list, &backpack_list, &station_list, &fallen_soldiers_list, pre_items, &zgroups_list, &fallen_zombie_list, types_zombies);
 
