@@ -25,6 +25,7 @@ int main()
     import_Items(pre_items);       // Importar items predeterminados
     import_Zombies(types_zombies); // Importar tipos de zombies
     import_Stations(types_zombies, &station_list, &zgroups_list);
+    import_Soldiers(&squad_list, pre_items, &backpack_list);
 
     main_menu(&squad_list, &backpack_list, &station_list, &fallen_soldiers_list, pre_items, &zgroups_list, &fallen_zombie_list, types_zombies);
 
