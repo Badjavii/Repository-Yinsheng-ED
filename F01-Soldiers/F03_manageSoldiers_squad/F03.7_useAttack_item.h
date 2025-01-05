@@ -44,8 +44,8 @@ void useAttack_item(item **item_list, string soldier_name, int zombie_id, Zgroup
         if (best_item != nullptr)
         {
             int damage = best_item->effect_value;
-            coutf(BLUE, "\nSe usó el ítem de ataque " + best_item->name + " para hacer daño al zombie " + to_string(zombie_id) + ".");
-            coutf(BLUE, "\nEl " + best_item->name + " tiene un valor de efecto de " + to_string(best_item->effect_value) + ".");
+            coutf(BLUE, "\nSe usó el ítem de ataque " + best_item->name + " para hacer daño al zombie " + to_string(zombie_id) + ".\n");
+            coutf(BLUE, "\nEl " + best_item->name + " tiene un valor de efecto de " + to_string(best_item->effect_value) + ".\n");
 
             // Reducir el número de usos del ítem
             best_item->usages--;
@@ -61,12 +61,12 @@ void useAttack_item(item **item_list, string soldier_name, int zombie_id, Zgroup
         }
         else
         {
-            coutf(RED, "\nNo hay ningún ítem de ataque en la mochila de " + soldier_name + ".");
+            coutf(RED, "\nNo hay ningún ítem de ataque en la mochila de " + soldier_name + ".\n");
         }
     }
     else
     {
-        coutf(RED, "\nNo se encontró el zombie " + to_string(zombie_id) + " en el grupo.");
+        coutf(RED, "\nNo se encontró el zombie " + to_string(zombie_id) + " en el grupo.\n");
     }
 }
 

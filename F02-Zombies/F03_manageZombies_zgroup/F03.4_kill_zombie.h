@@ -30,13 +30,13 @@ void kill_Zombie(Zgroup **zgroup_list, Zgroup *target_group, int zombie_id, zomb
         // Eliminar el zombie
         delete_Zombie(&(target_group->list_zombies), zombie_id);
 
-        coutf(BLUE, "\n\nEl zombie con ID " + to_string(zombie_id) + " ha sido eliminado.");
+        coutf(BLUE, "\n\nEl zombie con ID " + to_string(zombie_id) + " ha sido eliminado.\n");
 
         // Si ya no hay zombies en el grupo, eliminar el grupo de zombies
         if (isZombieListEmpty(target_group->list_zombies) == true)
         {
             delete_Zgroup(zgroup_list, target_group->number);
-            coutf(BLUE, "\n\nTodo el grupo de zombies " + to_string(target_group->number) + " ha sido eliminado.");
+            coutf(BLUE, "\n\nTodo el grupo de zombies " + to_string(target_group->number) + " ha sido eliminado.\n");
         }
     }
     return;

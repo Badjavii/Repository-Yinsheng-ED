@@ -11,7 +11,7 @@
 #endif
 
 #include <cstdio>
-// #include "indicator/progress_spinner.h"
+#include "indicator/progress_spinner.h"
 #include <thread>  // Incluye la libreria para el manejo de hilos
 #include <chrono>  // Incluye la libreria para el manejo del tiempo
 #include <sstream> // Incluye la librería para el manejo de string streams
@@ -173,25 +173,25 @@ int sTOi(const string &pepe)
     return stoi(trimmed_pepe);
 };
 
-/*void showProgressSpinner(int duration, const string& message) {
+void showProgressSpinner(int duration, const string &message)
+{
     using namespace indicators;
 
-ProgressSpinner spinner{
-    option::ForegroundColor{Color::green},
-    option::PrefixText{message + " "},
-    option::PostfixText{" Please wait..."},
-    option::ShowPercentage{true},
-    option::SpinnerStates{vector<string>{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}}};
+    ProgressSpinner spinner{
+        option::ForegroundColor{Color::green},
+        option::PrefixText{message + " "},
+        option::PostfixText{" Please wait..."},
+        option::ShowPercentage{true},
+        option::SpinnerStates{vector<string>{"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}}};
 
-for (int i = 0; i <= 100; ++i)
-{
-    spinner.set_progress(i);
-    this_thread::sleep_for(chrono::milliseconds(duration / 100));
-}
+    for (int i = 0; i <= 100; ++i)
+    {
+        spinner.set_progress(i);
+        this_thread::sleep_for(chrono::milliseconds(duration / 100));
+    }
 
-spinner.mark_as_completed();
-}
-*/
+    spinner.mark_as_completed();
+};
 
 #endif // OUTOOLS_H
 

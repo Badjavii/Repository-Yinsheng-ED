@@ -22,6 +22,7 @@ void hurt_Soldier(squad **squad_list, squad *target_squad, string name, int dama
 {
     // Buscar el soldado
     soldier *target_soldier = searchSoldier(target_squad->list_soldiers, name);
+    int old_health = target_soldier->health;
 
     // Reducir la vida del soldado
     if (target_soldier != nullptr)
@@ -36,16 +37,16 @@ void hurt_Soldier(squad **squad_list, squad *target_squad, string name, int dama
 
         target_soldier->health -= damage;
 
-        coutf(RED, "\nSe le efectuó " + to_string(damage) + " de daño al soldado " + name + "!");
+        coutf(RED, "\nSe le efectuó " + to_string(damage) + " de daño al soldado " + name + "!\n");
 
         // Verificar si la vida es mayor a 0
         if (target_soldier->health > 0)
         {
-            coutf(BLUE, "\nLa vida de " + name + " esta a " + to_string(target_soldier->health) + " de salud.");
+            coutf(BLUE, "\nLa vida de " + name + " estaba a " + to_string(old_health) + ", ahora esta a " + to_string(target_soldier->health) + " de salud.\n");
         }
         else // Verificar si la vida llega a 0 o menos
         {
-            coutf(RED, "\nLa vida de " + name + " esta a en 0 de salud. Va a morir.");
+            coutf(RED, "\nLa vida de " + name + " estaba a " + to_string(old_health) + ", ahora esta a en 0 de salud. Va a morir.\n");
             // Matar al soldado
             kill_Soldier(squad_list, target_squad, name, fallen_soldier_list, backpack_list);
         }

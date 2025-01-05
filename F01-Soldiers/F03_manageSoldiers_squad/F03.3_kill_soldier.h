@@ -32,13 +32,13 @@ void kill_Soldier(squad **squad_list, squad *target_squad, string name, soldier 
     // Eliminar al soldado
     delete_Soldier(&(target_squad->list_soldiers), name, backpack_list);
 
-    coutf(BLUE, "\n\nEl soldado " + name + " se encuentra descansando en paz.");
+    coutf(BLUE, "\n\nEl soldado " + name + " se encuentra descansando en paz.\n");
 
     // Si ya no hay soldados en el escuadron, eliminar el escuadron
     if (isSoldierListEmpty(target_squad->list_soldiers) == true)
     {
         delete_Squad(squad_list, target_squad->number, backpack_list);
-        coutf(BLUE, "\n\nTodo el escuadron " + to_string(target_squad->number) + " se encuentra descansando en paz.");
+        coutf(BLUE, "\n\nTodo el escuadron " + to_string(target_squad->number) + " se encuentra descansando en paz.\n");
     }
 
     return;

@@ -50,9 +50,9 @@ void useSurvival_item(soldier **soldier_list, string soldier_name)
                     target_soldier->health = 100;
                 }
 
-                coutf(BLUE, "\nSe usó el ítem de supervivencia " + best_item->name + " para curar al soldado " + soldier_name + ".");
-                coutf(BLUE, "\nEl " + best_item->name + " tiene un valor de efecto de " + to_string(best_item->effect_value) + ".");
-                coutf(BLUE, "\nLa salud del soldado " + soldier_name + " ahora es " + to_string(target_soldier->health) + ".");
+                coutf(BLUE, "\nSe usó el ítem de supervivencia " + best_item->name + " para curar al soldado " + soldier_name + ".\n");
+                coutf(BLUE, "\nEl " + best_item->name + " tiene un valor de efecto de " + to_string(best_item->effect_value) + ".\n");
+                coutf(BLUE, "\nLa salud del soldado " + soldier_name + " ahora es " + to_string(target_soldier->health) + ".\n");
 
                 // Reducir el número de usos del ítem
                 best_item->usages--;
@@ -65,7 +65,7 @@ void useSurvival_item(soldier **soldier_list, string soldier_name)
                 current_item = target_soldier->backpag->list_items; // Reiniciar la búsqueda de ítems
             }
             else
-                coutf(RED, "\nNo hay ningun item de supervivencia en la mochila de " + soldier_name + ".");
+                coutf(RED, "\nNo hay ningun item de supervivencia en la mochila de " + soldier_name + ".\n");
         }
     }
     return;

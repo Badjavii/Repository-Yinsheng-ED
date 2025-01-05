@@ -27,16 +27,16 @@ void hurt_Zombie(Zgroup **zgroup_list, Zgroup *target_group, int zombie_id, int 
     {
         target_zombie->health -= damage;
 
-        coutf(RED, "\nSe le efectuó " + to_string(damage) + " de daño al zombie con ID " + to_string(zombie_id) + "!");
+        coutf(RED, "\nSe le efectuó " + to_string(damage) + " de daño al zombie con ID " + to_string(zombie_id) + "!\n");
 
         // Verificar si la vida es mayor a 0
         if (target_zombie->health > 0)
         {
-            coutf(BLUE, "\nLa vida del zombie con ID " + to_string(zombie_id) + " está a " + to_string(target_zombie->health) + " de salud.");
+            coutf(BLUE, "\nLa vida del zombie con ID " + to_string(zombie_id) + " está a " + to_string(target_zombie->health) + " de salud.\n");
         }
         else // Verificar si la vida llega a 0 o menos
         {
-            coutf(RED, "\nLa vida del zombie con ID " + to_string(zombie_id) + " está en 0 de salud. Va a ser eliminado.");
+            coutf(RED, "\nLa vida del zombie con ID " + to_string(zombie_id) + " está en 0 de salud. Va a ser eliminado.\n");
             // Matar al zombie
             kill_Zombie(zgroup_list, target_group, zombie_id, fallen_zombie_list);
         }

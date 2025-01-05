@@ -54,9 +54,9 @@ int useDefensive_item(string soldier_name, item **item_list, int damage)
         if (new_damage < 0)
             new_damage = 0; // En caso de que el daño sea negativo
 
-        coutf(BLUE, "\nSe hizo uso de item defensivo " + best_item->name + " para reducir el daño.");
-        coutf(BLUE, "\nEl " + best_item->name + " tiene un valor de efecto de " + to_string(best_item->effect_value) + ".");
-        coutf(BLUE, "\nEl uso de " + best_item->name + " redujó el daño que recibirá el soldado de " + to_string(damage) + " a " + to_string(new_damage) + ".");
+        coutf(BLUE, "\nSe hizo uso de item defensivo " + best_item->name + " para reducir el daño.\n");
+        coutf(BLUE, "\nEl " + best_item->name + " tiene un valor de efecto de " + to_string(best_item->effect_value) + ".\n");
+        coutf(BLUE, "\nEl uso de " + best_item->name + " redujó el daño que recibirá el soldado de " + to_string(damage) + " a " + to_string(new_damage) + ".\n");
 
         // Reduce el número de usos del ítem
         best_item->usages--;
@@ -69,7 +69,7 @@ int useDefensive_item(string soldier_name, item **item_list, int damage)
         return new_damage;
     }
     else
-        coutf(RED, "\nNo hay ningun item de defensa en la mochila de " + soldier_name + ".");
+        coutf(RED, "\nNo hay ningun item de defensa en la mochila de " + soldier_name + ".\n");
     return damage;
 };
 
