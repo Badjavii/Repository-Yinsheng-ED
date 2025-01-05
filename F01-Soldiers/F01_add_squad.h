@@ -17,6 +17,7 @@ squad *create_Squad(int number)
     squad *newSquad = new squad;
     newSquad->number = number;
     newSquad->list_soldiers = nullptr;
+    newSquad->target_station = nullptr;
     newSquad->next = nullptr;
     return newSquad;
 };

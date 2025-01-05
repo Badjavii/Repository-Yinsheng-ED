@@ -309,6 +309,14 @@ void showSummarySquad(squad *squad_list)
     while (squad_list != nullptr)
     {
         coutf(BLUE, "- Escuadron #" + to_string(squad_list->number) + " (" + to_string(countSoldier(squad_list->list_soldiers)) + " soldados).\n");
+        if (squad_list->target_station != nullptr)
+        {
+            coutf(BLUE, "   - Conectado con la estacion no." + to_string(squad_list->target_station->number_station) + "\n");
+        }
+        else
+        {
+            coutf(BLUE, "   - Sin estacion conectada.\n");
+        }
         squad_list = squad_list->next;
     }
     return;

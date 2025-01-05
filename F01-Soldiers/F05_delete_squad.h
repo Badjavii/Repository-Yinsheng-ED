@@ -52,6 +52,10 @@ void delete_Squad(squad **squad_list, int number_squad, bpck **backpack_list)
             // Desconectar el nodo antes de eliminarlo
             current_squad->next = nullptr;
 
+            // Desconectar el nodo de la estación
+            current_squad->target_station->target_squad = nullptr;
+            current_squad->target_station = nullptr;
+
             // Liberar la memoria del escuadrón eliminado
             delete current_squad;
             return;

@@ -23,7 +23,8 @@ struct bpck
 
 //******************* SOLDADOS ******************************/
 
-struct zombie; // Declaración adelantada de la estructura zombie
+struct zombie;  // Declaración adelantada de la estructura zombie
+struct station; // Declaración adelantada de la estructura station
 
 // Estructura que representa un soldado
 struct soldier
@@ -38,14 +39,13 @@ struct soldier
 // Estructura que representa un escuadrón
 struct squad
 {
-    int number;             // Número del escuadrón
-    soldier *list_soldiers; // Puntero a la lista de soldados en el escuadrón
-    squad *next;            // Puntero al siguiente escuadrón en la lista
+    int number;              // Número del escuadrón
+    soldier *list_soldiers;  // Puntero a la lista de soldados en el escuadrón
+    station *target_station; // Puntero a la estación que se encuentra el grupo
+    squad *next;             // Puntero al siguiente escuadrón en la lista
 };
 
 //******************* ZOMBIES ******************************/
-
-struct station; // Declaración adelantada de la estructura station
 
 // Estructura que representa un zombie
 struct zombie
@@ -87,6 +87,14 @@ struct station
     Zgroup *target_group;  // Puntero al grupo de zombies
     conns *list_adjacency; // Puntero a la lista de conexiones adyacentes
     station *next;         // Puntero a la siguiente estación en la lista
+};
+
+// Struct para almacenar la información de las conexiones
+struct roots
+{
+    int origin_station;
+    int destination_station;
+    int weight;
 };
 
 #endif // STRUCT_H

@@ -7,6 +7,8 @@
 #include "F03_consult_stations.h"
 #include "F04_add_connection.h"
 #include "F05_delete_connection.h"
+#include "F06_manageRoutes_stations/F06_manageRoutes_stations.h"
+#include "F07_manageSquads&Groups_stations/F07_manageSquads&Groups_stations.h"
 #include "FJJ_extra.h"
 
 /**
@@ -192,10 +194,10 @@ void Menu_Stations(Zgroup **zgroup_list, squad **squad_list, station **stations_
             delete_Conns(&(searchStation(*stations_list, x)->list_adjacency), y, z);
             break;
         case 6:
-            // showFallen_zombies(*fallen_zombie_list);
+            manageRoutes_Stations(squad_list, zgroup_list, stations_list);
             break;
         case 7:
-            // showLiving_Zombies(*zgroup_list);
+            manageSquadsAndGroups_Stations(squad_list, zgroup_list, stations_list);
             break;
         case 0:
             return;
