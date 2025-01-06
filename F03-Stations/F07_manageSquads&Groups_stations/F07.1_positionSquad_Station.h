@@ -5,27 +5,27 @@
 #include "../../F01-Soldiers/FZZ_extra.h"
 #include "../FJJ_extra.h"
 
-void positionSquad_Station(station **station_list, squad **squad_list)
+squad *positionSquad_Station(station **station_list, squad **squad_list)
 {
     // Verificar si la lista de estaciones está vacía
     if (isStationListEmpty(*station_list) == true)
     {
         coutf(RED, "\nNo hay estaciones, por tanto, no se puede hacer nada.");
-        return;
+        return nullptr;
     }
 
     // Verificar si la lista de escuadrones está vacía
     if (isSquadListEmpty(*squad_list) == true)
     {
         coutf(RED, "\nNo hay escuadrones, por tanto, no se puede hacer nada.");
-        return;
+        return nullptr;
     }
 
     // Verificar si hay algún escuadrón disponible para conectar
     if (isAvalibleAnySquadToConnect(*squad_list) == false)
     {
         coutf(RED, "\nNo hay ninguna estación disponible para posicionar un escuadron.");
-        return;
+        return nullptr;
     }
 
     // Mostrar resumen de estaciones
@@ -40,7 +40,7 @@ void positionSquad_Station(station **station_list, squad **squad_list)
     if (existsStation(*station_list, x) == false)
     {
         coutf(RED, "\nNo existe esa estación.");
-        return;
+        return nullptr;
     }
 
     // Mostrar resumen de escuadrones disponibles
@@ -55,14 +55,14 @@ void positionSquad_Station(station **station_list, squad **squad_list)
     if (existsSquad(*squad_list, y) == false)
     {
         coutf(RED, "\nNo existe ese escuadron.");
-        return;
+        return nullptr;
     }
 
     // Verificar si el escuadrón ya está conectado a una estación
     if (isSquadConnectedToStation(searchSquad(*squad_list, y)) == true)
     {
         coutf(RED, "\nEse escuadron ya está conectado a una estación.");
-        return;
+        return nullptr;
     }
 
     // Posicionar el escuadrón en la estación, sin importar si ya había uno asignado
@@ -70,7 +70,7 @@ void positionSquad_Station(station **station_list, squad **squad_list)
     target_squad->target_station = searchStation(*station_list, x);
     target_squad->target_station->target_squad = target_squad;
     coutf(GREEN, "\nEscuadron no." + to_string(y) + " posicionado en la estación no." + to_string(x) + ".\n");
-    return;
+    return target_squad;
 };
 
 #endif // F07_1_POSITION_SQUAD_STATION_H

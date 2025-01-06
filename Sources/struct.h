@@ -87,6 +87,7 @@ struct station
     Zgroup *target_group;  // Puntero al grupo de zombies
     conns *list_adjacency; // Puntero a la lista de conexiones adyacentes
     station *next;         // Puntero a la siguiente estación en la lista
+    bool visited;
 };
 
 // Struct para almacenar la información de las conexiones

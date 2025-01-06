@@ -28,7 +28,7 @@
  * @return La función no retorna ningún valor.
  **/
 
-void Menu_Stations(Zgroup **zgroup_list, squad **squad_list, station **stations_list)
+void Menu_Stations(Zgroup **zgroup_list, squad **squad_list, station **stations_list, soldier **fallen_soldier_list, zombie **fallen_zombies_list, bpck **backpack_list)
 {
     int op = -1, x, y, z;
     string chain;
@@ -197,7 +197,7 @@ void Menu_Stations(Zgroup **zgroup_list, squad **squad_list, station **stations_
             manageRoutes_Stations(squad_list, zgroup_list, stations_list);
             break;
         case 7:
-            manageSquadsAndGroups_Stations(squad_list, zgroup_list, stations_list);
+            manageSquadsAndGroups_Stations(squad_list, zgroup_list, stations_list, fallen_soldier_list, fallen_zombies_list, backpack_list);
             break;
         case 0:
             return;

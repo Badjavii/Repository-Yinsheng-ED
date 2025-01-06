@@ -22,11 +22,12 @@ void hurt_Soldier(squad **squad_list, squad *target_squad, string name, int dama
 {
     // Buscar el soldado
     soldier *target_soldier = searchSoldier(target_squad->list_soldiers, name);
-    int old_health = target_soldier->health;
 
     // Reducir la vida del soldado
     if (target_soldier != nullptr)
     {
+
+        int old_health = target_soldier->health;
 
         // Si tiene mochila
         if (target_soldier->backpag != nullptr)

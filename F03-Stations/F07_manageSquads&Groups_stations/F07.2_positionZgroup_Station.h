@@ -68,6 +68,7 @@ void positionZgroup_Station(station **station_list, Zgroup **zgroup_list)
     // Posicionar el grupo de zombies en la estación, sin importar si ya había uno asignado
     station *target_station = searchStation(*station_list, x);
     target_station->target_group = searchZgroup(*zgroup_list, y);
+    target_station->amount_zombies = countZombie((*zgroup_list)->list_zombies);
     coutf(GREEN, "\nGrupo de zombies no." + to_string(y) + " posicionado en la estación no." + to_string(x) + ".\n");
 }
 

@@ -11,7 +11,7 @@
 #include <queue>
 
 // Definición de la constante para infinito
-const int INF = 1e9; // Un valor muy grande para representar infinito
+const int INF = 1000000000; // Un valor muy grande para representar infinito
 
 /**
  * @brief Encuentra el camino más corto entre dos estaciones utilizando el algoritmo de Dijkstra.
@@ -21,7 +21,7 @@ const int INF = 1e9; // Un valor muy grande para representar infinito
  * @param end Estación de destino.
  * @return Vector de structs `roots` que representa el camino más corto.
  */
-
+/*
 vector<roots> shortestPath(station **station_list, int start, int end)
 {
 
@@ -96,6 +96,12 @@ vector<roots> shortestPath(station **station_list, int start, int end)
 
     return path; // Devolver el camino más corto
 }
+*/
+
+#include <iostream>
+#include <vector>
+#include <limits>
+#include <queue>
 
 /**
  * @brief Encuentra el camino más corto entre dos estaciones utilizando el algoritmo de Dijkstra.
@@ -105,81 +111,81 @@ vector<roots> shortestPath(station **station_list, int start, int end)
  * @param end Estación de destino.
  * @return Vector de structs `roots` que representa el camino más corto.
  */
-
-/*
 vector<roots> shortestPath(station **station_list, int start, int end)
 {
-    cout << "\n\nIniciando búsqueda del camino más corto...\n";
+    std::cout << "\n\nPRUEBAAAAAAA";
 
-    // Obtener el número total de estaciones
+    // Verificar que las estaciones de inicio y fin sean válidas
+    if (start < 0 || end < 0)
+    {
+        std::cerr << "Error: El índice de la estación de inicio o fin es inválido." << std::endl;
+        return {};
+    }
+
     int num_stations = countStations(*station_list);
-    cout << "Número total de estaciones: " << num_stations << endl;
+    if (start >= num_stations || end >= num_stations)
+    {
+        std::cerr << "Error: El índice de la estación de inicio o fin está fuera del rango." << std::endl;
+        return {};
+    }
 
-    // Inicializar vectores de distancias, predecesores y visitados
     vector<int> dist(num_stations, INF);
     vector<station *> prev(num_stations, nullptr);
-    vector<bool> visited(num_stations, false);
 
-    // Establecer la distancia a la estación de inicio a 0
+    // Inicializar las estaciones como no visitadas
+    station *current_station = *station_list;
+    while (current_station != nullptr)
+    {
+        current_station->visited = false;
+        current_station = current_station->next;
+    }
+
     dist[start] = 0;
-
-    // Cola de prioridad para almacenar las estaciones por explorar
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> queue;
     queue.push({0, start});
 
-    // Ciclo principal del algoritmo de Dijkstra
     while (!queue.empty())
     {
-        // Extraer la estación con la menor distancia
         int u = queue.top().second;
         queue.pop();
-        cout << "Visitando estación: " << u << endl;
-
-        // Si la estación ya fue visitada, saltarla
-        if (visited[u])
-        {
-            cout << "Estación " << u << " ya visitada.\n";
-            continue;
-        }
 
         // Marcar la estación como visitada
-        visited[u] = true;
-
-        // Si llegamos a la estación de destino, salimos del ciclo
-        if (u == end)
-        {
-            cout << "Se ha alcanzado la estación de destino: " << end << endl;
-            break;
-        }
-
-        // Obtener la estación actual
         station *current = searchStation(*station_list, u);
         if (current == nullptr)
         {
-            cerr << "Error: no se pudo encontrar la estación " << u << endl;
+            std::cerr << "Error: No se pudo encontrar la estación " << u << std::endl;
             continue;
         }
 
-        // Recorrer las conexiones adyacentes de la estación actual
+        current->visited = true;
+
+        std::cout << "Visitando estación: " << u << std::endl;
+
+        if (u == end)
+            break;
+
         for (conns *conn = current->list_adjacency; conn != nullptr; conn = conn->next)
         {
             int v = conn->destiny->number_station;
             int weight = conn->weight;
+            station *next_station = searchStation(*station_list, v);
 
-            cout << "Evaluando conexión de estación " << u << " a estación " << v << " con peso " << weight << endl;
+            if (next_station == nullptr)
+            {
+                std::cerr << "Error: No se pudo encontrar la estación destino " << v << std::endl;
+                continue;
+            }
 
-            // Si la estación no ha sido visitada y encontramos un camino más corto
-            if (!visited[v] && dist[u] != INF && dist[u] + weight < dist[v])
+            if (!next_station->visited && dist[u] != INF && dist[u] + weight < dist[v])
             {
                 dist[v] = dist[u] + weight;
                 prev[v] = current;
                 queue.push({dist[v], v});
-                cout << "Actualizando distancia de estación " << v << " a " << dist[v] << endl;
+                std::cout << "Actualizando distancia de estación " << v << " a " << dist[v] << std::endl;
             }
         }
     }
 
-    // Reconstruir el camino más corto desde la estación de destino a la estación de inicio
     vector<roots> path;
     for (station *at = searchStation(*station_list, end); at != nullptr; at = prev[at->number_station])
     {
@@ -190,18 +196,16 @@ vector<roots> shortestPath(station **station_list, int start, int end)
         }
     }
 
-    // Invertir el camino para que esté en orden desde el inicio hasta el destino
     reverse(path.begin(), path.end());
 
     // Imprimir el camino encontrado para depuración
-    cout << "Camino encontrado:\n";
+    std::cout << "Camino encontrado:\n";
     for (const auto &r : path)
     {
-        cout << "De estación " << r.origin_station << " a estación " << r.destination_station << " con peso " << r.weight << endl;
+        std::cout << "De estación " << r.origin_station << " a estación " << r.destination_station << " con peso " << r.weight << std::endl;
     }
 
-    return path; // Devolver el camino más corto
+    return path;
 }
-*/
 
 #endif // F06_1_SHORTEST_PATH_H

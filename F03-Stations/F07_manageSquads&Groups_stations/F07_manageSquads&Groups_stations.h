@@ -6,9 +6,10 @@
 #include "F07.1_positionSquad_Station.h"
 #include "F07.2_positionZgroup_Station.h"
 #include "F07.3_moveSquad_Station.h"
+#include "F07.4_travelSquad_Station.h"
 #include "../FJJ_extra.h"
 
-void manageSquadsAndGroups_Stations(squad **squad_list, Zgroup **zgroup_list, station **station_list)
+void manageSquadsAndGroups_Stations(squad **squad_list, Zgroup **zgroup_list, station **station_list, soldier **fallen_soldier_list, zombie **fallen_zombies_list, bpck **backpack_list)
 {
     int op = -1, x, y, z;
     string chain, chain2;
@@ -83,6 +84,9 @@ void manageSquadsAndGroups_Stations(squad **squad_list, Zgroup **zgroup_list, st
             }
 
             moveSquad_Station(station_list, searchSquad(*squad_list, x), y);
+            break;
+        case 4:
+            travelSquad_Stations(squad_list, station_list, zgroup_list, fallen_soldier_list, fallen_zombies_list, backpack_list);
             break;
         case 0:
             return;
