@@ -5,6 +5,8 @@
 #include "../F01-Soldiers/F00_main_squads.h"
 #include "../F02-Zombies/F00_main_zgroup.h"
 #include "../F03-Stations/F00_main_stations.h"
+#include "../F04-Binnacle/F04_Binnacle.h"
+#include "../F05-Game/F00_start_Game.h"
 
 /**
  * @brief Función que muestra el menú principal y maneja las opciones seleccionadas por el usuario.
@@ -31,7 +33,7 @@ void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier 
     station *station_list = *station_l;
     Zgroup *zgroup_list = *zgroup_l;
 
-    int op = -1;
+    int op = -1, x;
 
     while (op)
     {
@@ -40,7 +42,7 @@ void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier 
         coutf(BLUE, "1. Gestión de escuadrones antizombies\n");
         coutf(BLUE, "2. Gestión de grupos de zombies\n");
         coutf(BLUE, "3. Gestión de estaciones\n");
-        coutf(BLUE, "4. Revisar bitacora\n");
+        coutf(BLUE, "4. Revisar bitacora de consulta\n");
         coutf(BLUE, "5. QUE INICIE LA AVENTURA (iniciar juego)\n\n");
         coutf(BLUE, "0. GAME OVER\n\n");
 
@@ -77,6 +79,25 @@ void main_menu(squad **squad_l, bpck **backpack_l, station **station_l, soldier 
                 @param **zombies_groups_list Es un puntero doble a la lista de grupos de zombies.
             */
             Menu_Stations(&zgroup_list, &squad_list, &station_list, fallen_soldier_l, fallen_zombie_list, &backpack_list);
+            break;
+        case 4:
+            Menu_Binnacle(&zgroup_list, &squad_list, fallen_soldier_l, fallen_zombie_list);
+            break;
+        case 5:
+            coutf(YELLOW, "¿Estas seguro que deseas iniciar el juego? (1. Si | 2. No)\n");
+            cinv("int", x);
+            while (x != 1 && x != 2) // Validar ¿1 o 2?
+            {
+                coutf(RED, "Opción inválida. Inténtalo de nuevo: ");
+                cinv("int", x);
+            }
+
+            if (x == 2)
+            {
+                break;
+            }
+
+            start_Game(&squad_list, &station_list, &zgroup_list, fallen_soldier_l, fallen_zombie_list, &backpack_list);
             break;
         case 0:
             // Salir del menú

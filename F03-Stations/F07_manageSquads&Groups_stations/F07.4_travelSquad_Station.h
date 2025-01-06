@@ -74,12 +74,13 @@ void travelSquad_Stations(squad **squad_list, station **station_list, Zgroup **z
             battle(target_squad, opponente_group, squad_list, zgroup_list, fallen_soldier_list, fallen_zombies_list, backpack_list);
         }
 
-        if (target_squad == nullptr)
+        if ((target_squad == nullptr) || (target_squad->list_soldiers == nullptr))
         {
             return;
         }
 
         moveSquad_Station(station_list, target_squad, root[i].destination_station);
+        PAUSE_TERMINAL;
     }
 
     if (target_squad->target_station->number_station == x)

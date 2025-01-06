@@ -94,6 +94,9 @@ void battle(squad *target_squad, Zgroup *opponent_group, squad **squad_list, Zgr
         soldier *current_soldier = target_squad->list_soldiers;
         while (current_soldier != nullptr)
         {
+            if (opponent_group->list_zombies == nullptr)
+                break; // Verificar si todos los soldados han sido derrotados antes de cada ataque
+
             if (current_soldier->opponent != nullptr)
             {
                 useAttack_item(&(current_soldier->backpag->list_items), current_soldier->name, current_soldier->opponent->id, opponent_group, zgroup_list, fallen_zombies_list);
@@ -110,6 +113,9 @@ void battle(squad *target_squad, Zgroup *opponent_group, squad **squad_list, Zgr
         current_zombie = opponent_group->list_zombies;
         while (current_zombie != nullptr)
         {
+            if (target_squad->list_soldiers == nullptr)
+                break; // Verificar si todos los soldados han sido derrotados antes de cada ataque
+
             if (current_zombie->opponent != nullptr)
             {
                 useDamage_Zombie(squad_list, current_zombie->opponent->name, current_zombie->id, opponent_group, fallen_soldier_list, backpack_list);
@@ -132,12 +138,13 @@ void battle(squad *target_squad, Zgroup *opponent_group, squad **squad_list, Zgr
             useSurvival_item(&(target_squad->list_soldiers), current_soldier->name);
             current_soldier = current_soldier->next;
         }
-        cout << "El escuadrón ha ganado la batalla y ha usado ítems de supervivencia para restaurar su salud." << endl;
+        coutf(BLUE, "\nEl escuadrón ha ganado la batalla.\n");
     }
     else
     {
-        cout << "La batalla ha terminado pero el escuadrón no ha derrotado a todos los zombies." << endl;
+        coutf(BLUE, "\nLa batalla ha terminado pero el escuadrón no ha derrotado a todos los zombies.\n");
     }
+    return;
 }
 
 #endif // F01_START_BATTLE_H
